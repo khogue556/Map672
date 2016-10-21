@@ -88,11 +88,17 @@ li {
 
 <body>
 
-	<h1>Awesome Map!</h1>
+	<h1>Jacksonville Florida. Home of the Jaguars!</h1>
     <div id='map'></div>
     <section>
     <h2>About this map</h2>
-    <p>Additional information about <a href="http://kentuckysportsradio.com">the data</a> and map goes here.</p>
+    
+        <p>Map Authored by Kevin Hogue in 2016 for New Maps Plus course Map672</p>
+        <p>According to the 2010 US Census, Jacksonville in the largest city in Florida.  Jacksonville was named for
+        Andrew Jackson who was the first military govenor of the Florida Territory and later went on to become the 
+        seventh President of the United States.  In 1993, the NFL awarded Jacksonville an expansion franchise called the Jacksonville Jaguars and the city hosted
+        the Superbowl XXXIX in 2005.</p>
+        
 	<ul>
     <li>See my projects on GitHub: <a href="https://github.com/newmapsplus">New Maps Plus</a></li>
     <li>Follow me on twitter: <a href="https://twitter.com/NewMapsPlus">@NewMapsPlus</a></li>
@@ -100,7 +106,7 @@ li {
 </ul>
     </section>
     <script> 
-        document.querySelector('h1').innerHTML = 'web mapping is sweet!';
+        document.querySelector('h1').innerHTML = 'Jacksonville Flordia. Home of the Jaguars';
 	
     var map = document.getElementById('map');
         map.style.background = '#4d4a9f'; 
@@ -115,7 +121,7 @@ document.querySelector('ul').appendChild(newListItem);
         console.log("hello map");
    
     var options = {
-    center: [38.0406, -84.5037],
+    center: [30.3321800, -81.6556500],
     zoom: 12
 }
 
@@ -127,7 +133,7 @@ var tiles = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.
     maxZoom: 19
 }).addTo(map);
 
-var message = 'Lexington is awesome!';
+var message = 'Jacksonville';
 
 L.marker(map.getCenter())
     .bindTooltip(message)
