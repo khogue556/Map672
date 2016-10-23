@@ -34,9 +34,9 @@
 	body {
     margin: 10px;
     padding: 1px;
-    background: #f5f5f5;
-    font-family: "Noto Sans", sans-serif;
-    color: #3d3d3d;
+    background: #016576;
+    font-family: "Tahoma", sans-serif;
+    color: #d7a22a;
 }
 }
 section {
@@ -47,12 +47,12 @@ section {
 h1 {
     width: 960px;
     margin: 20px auto;
-    font-family: Lora, serif;
+    font-family: "Lora", serif;
     letter-spacing: .04em;
 }
 
 h2 {
-    font-family: Lora, serif;
+    font-family: "Lora", serif;
     letter-spacing: .04em;
 }
         p {
@@ -61,7 +61,7 @@ h2 {
 }
 
 a {
-    color: #005daa;
+    color: #ffffff;
     font-weight: bold;
     text-decoration: none;
 }
@@ -88,25 +88,26 @@ li {
 
 <body>
 
-	<h1>Jacksonville Florida. Home of the Jaguars!</h1>
+	<h1>Jacksonville Florida Home of the Jaguars!</h1>
     <div id='map'></div>
     <section>
     <h2>About this map</h2>
     
         <p>Map Authored by Kevin Hogue in 2016 for New Maps Plus course Map672</p>
-        <p>According to the 2010 US Census, Jacksonville in the largest city in Florida.  Jacksonville was named for
-        Andrew Jackson who was the first military govenor of the Florida Territory and later went on to become the 
-        seventh President of the United States.  In 1993, the NFL awarded Jacksonville an expansion franchise called the Jacksonville Jaguars and the city hosted
-        the Superbowl XXXIX in 2005.</p>
+        <p>According to the 2010 US Census, Jacksonville is the largest city in Florida.  Named for
+        Andrew Jackson, the first military govenor of the Florida Territory and later went on to become the 
+        seventh President of the United States.  In 1993, the NFL awarded Jacksonville an expansion franchise called the Jacksonville Jaguars and the city hosted Superbowl XXXIX in 2005.</p>
         
 	<ul>
-    <li>See my projects on GitHub: <a href="https://github.com/newmapsplus">New Maps Plus</a></li>
-    <li>Follow me on twitter: <a href="https://twitter.com/NewMapsPlus">@NewMapsPlus</a></li>
-    <li>Visit my <a href='#'>mapping portfolio</a>.</li>
+    <li>Read about <a href="http://visitjacksonville.com/">Visiting Jacksonville</a></li>
+    <li>Everything you need to know about the <a href="http://jaguars.com/">Jaguars</a></li>
+    <li>Lots of <a href='http://www.jaxhistory.org/'>history</a> too</li>
 </ul>
+    <p>Jacksonville is a large city geographically, represented in its entirety by Duvall County.  It represents a diverse geographic area including forests, marshes, beaches and low-lying river lands.  The idea of the cartographic gaze is to try and represent or "convert" such diverse features onto the prison which is a map.  However, Pickles (2004) thinks beyond the simple geographic features and might wonder why the Jacksonville city limits were made to encompass the entire county.  If the ordering principles of the cartographic gaze have always been political or consequences of politics, was this because of voting, schools or taxes?  The Cartographic Gaze seeks to know all things.</p>
+    
     </section>
     <script> 
-        document.querySelector('h1').innerHTML = 'Jacksonville Flordia. Home of the Jaguars';
+        document.querySelector('h1').innerHTML = 'Jacksonville Florida! Home of the Jaguars';
 	
     var map = document.getElementById('map');
         map.style.background = '#4d4a9f'; 
@@ -114,10 +115,7 @@ li {
     map.addEventListener('click', function() {
     this.style.width = '400px';   
 });
-        var newListItem = document.createElement('li');
-newListItem.innerHTML = "list item 4";
-document.querySelector('ul').appendChild(newListItem);
-        
+              
         console.log("hello map");
    
     var options = {
