@@ -2,144 +2,112 @@
 <html>
 
 <head>
-    <meta charset=utf-8 />
-    <title>Web Map Template Fixed Width</title>
-    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
- <meta charset=utf-8 />
-    <title>Web Page Template</title>
-    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+	<meta charset=utf-8 />
+	<title>Web Map Template Fixed Width</title>
+	<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
-   <meta charset=utf-8 />
-    <title>Web Page Template</title>
-    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css" />
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
+	<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+	<meta charset=utf-8 />
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
 
-    <script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-    <script src="http://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>    
-
-<script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
-<script>
-    // custom JavaScript goes here
-</script>
-    <style>
-		
+	<script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+	<script>
+		// custom JavaScript goes here
+	</script>
+	<style>
 	body {
-    margin: 10px;
-    padding: 1px;
-    background: #016576;
-    font-family: "Tahoma", sans-serif;
-    color: #d7a22a;
-}
-}
-section {
-    width: 960px;
-    margin: 20px auto;
-}
-
-h1 {
-    width: 960px;
-    margin: 20px auto;
-    font-family: "Lora", serif;
-    letter-spacing: .04em;
-}
-
-h2 {
-    font-family: "Lora", serif;
-    letter-spacing: .04em;
-}
-        p {
-    font-size: 1em;
-    line-height: 1.5em;
-}
-
-a {
-    color: #ffffff;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-ul {
-    padding-left: 20px;
-}
-
-li {
-    margin: 10px 0
-}
-        #map {
-    width: 960px;
-    height: 540px;
-    margin: 10px auto;
-    border: 2px solid #d3d3d3;
-}
-    </style>
+			margin: 10px;
+			padding: 1px;
+			background: #016576;
+			font-family: "Tahoma", sans-serif;
+			color: #d7a22a;
+	}
+	section {
+		width: 960px;
+		margin: 20px auto;
+	}
+	h1 {
+		width: 960px;
+		margin: 20px auto;
+		font-family: "Lora", serif;
+		letter-spacing: .04em;
+	}
+	h2 {
+		font-family: "Lora", serif;
+		letter-spacing: .04em;
+	}
+	p {
+		font-size: 1em;
+		line-height: 1.5em;
+	}
+	a {
+		color: #ffffff;
+		font-weight: bold;
+		text-decoration: none;
+	}
+	a:hover {
+		text-decoration: underline;
+	}
+	ul {
+		padding-left: 20px;
+	}
+	li {
+		margin: 10px 0
+	}
+	#map {
+		width: 960px;
+		height: 540px;
+		margin: 10px auto;
+		border: 2px solid #d3d3d3;
+	}
+	</style>
 </head>
 
 <body>
 
 	<h1>Jacksonville Florida Home of the Jaguars!</h1>
-    <div id='map'></div>
-    <section>
-    <h2>About this map</h2>
-    
-        <p>Map Authored by Kevin Hogue in 2016 for New Maps Plus course Map672</p>
-        <p>According to the 2010 US Census, Jacksonville is the largest city in Florida.  Named for
-        Andrew Jackson, the first military govenor of the Florida Territory and later went on to become the 
-        seventh President of the United States.  In 1993, the NFL awarded Jacksonville an expansion franchise called the Jacksonville Jaguars and the city hosted Superbowl XXXIX in 2005.</p>
-        
-	<ul>
-    <li>Read about <a href="http://visitjacksonville.com/">Visiting Jacksonville</a></li>
-    <li>Everything you need to know about the <a href="http://jaguars.com/">Jaguars</a></li>
-    <li>Lots of <a href='http://www.jaxhistory.org/'>history</a> too</li>
-</ul>
-    <p>Jacksonville is a large city geographically, represented in its entirety by Duvall County.  It represents a diverse geographic area including forests, marshes, beaches and low-lying river lands.  The idea of the cartographic gaze is to try and represent or "convert" such diverse features onto the prison which is a map.  However, Pickles (2004) thinks beyond the simple geographic features and might wonder why the Jacksonville city limits were made to encompass the entire county.  If the ordering principles of the cartographic gaze have always been political or consequences of politics, was this because of voting, schools or taxes?  The Cartographic Gaze seeks to know all things.</p>
-    
-    </section>
-    <script> 
-        document.querySelector('h1').innerHTML = 'Jacksonville Florida! Home of the Jaguars';
-	
-    var map = document.getElementById('map');
-        map.style.background = '#4d4a9f'; 
-    
-    map.addEventListener('click', function() {
-    this.style.width = '400px';   
-});
-              
-        console.log("hello map");
-   
-    var options = {
-    center: [30.3321800, -81.6556500],
-    zoom: 12
-}
+	<div id='map'></div>
+	<section>
+		<h2>About this map</h2>
 
-var map = L.map('map', options);
+		<p>Map Authored by Kevin Hogue in 2016 for New Maps Plus course Map672</p>
+		<p>According to the 2010 US Census, Jacksonville is the largest city in Florida. Named for Andrew Jackson, the first military govenor of the Florida Territory and later went on to become the seventh President of the United States. In 1993, the NFL awarded Jacksonville an expansion franchise called the Jacksonville Jaguars and the city hosted Superbowl XXXIX in 2005.</p>
 
-var tiles = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
-    subdomains: 'abcd',
-    maxZoom: 19
-}).addTo(map);
+		<ul>
+			<li>Read about <a href="http://visitjacksonville.com/">Visiting Jacksonville</a></li>
+			<li>Everything you need to know about the <a href="http://jaguars.com/">Jaguars</a></li>
+			<li>Lots of <a href='http://www.jaxhistory.org/'>history</a> too</li>
+		</ul>
+		<p>Jacksonville is a large city geographically, represented in its entirety by Duvall County. It represents a diverse geographic area including forests, marshes, beaches and low-lying river lands. The idea of the cartographic gaze is to try and represent or "convert" such diverse features onto the prison which is a map. However, Pickles (2004) thinks beyond the simple geographic features and might wonder why the Jacksonville city limits were made to encompass the entire county. If the ordering principles of the cartographic gaze have always been political or consequences of politics, was this because of voting, schools or taxes? The Cartographic Gaze seeks to know all things.</p>
 
-var message = 'Jacksonville';
+	</section>
+	<script>
+		document.querySelector('h1').innerHTML = 'Jacksonville Florida! Home of the Jaguars';
 
-L.marker(map.getCenter())
-    .bindTooltip(message)
-    .addTo(map)
-    .openTooltip();
-   
-    </script>
-    
+		var options = {
+			center: [30.33218, -81.65565],
+			zoom: 12
+		}
+
+		var map = L.map('map', options);
+
+		var tiles = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
+			attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+			subdomains: 'abcd',
+			maxZoom: 19
+		}).addTo(map);
+
+		var message = 'Jacksonville';
+
+		L.marker(map.getCenter())
+			.bindTooltip(message)
+			.addTo(map)
+			.openTooltip();
+	</script>
+
 </body>
 
 </html>
