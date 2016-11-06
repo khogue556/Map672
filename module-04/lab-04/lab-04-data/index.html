@@ -15,9 +15,9 @@
 		body {
 			margin: 0;
 			padding: 0;
-			background: whitesmoke;
+			background: #1b952e;
 			font-family: "Noto Sans", sans-serif;
-			color: #3d3d3d;
+			color: #fffdfc;
 		}
 
     	section {
@@ -70,9 +70,9 @@
 		
 		<h2>Map Info</h2>
 		
-		<p>Map authored by Kevin Hogue for New Maps Plus, fall 2016</p>
+		<p>Map authored by Kevin Hogue for New Maps Plus, MAP 276 - fall 2016</p>
 
-		<p>Population data from US census 2105 estimate</p>
+		<p>Population data from US Census 2105 estimate</p>
 
 	</section>
 	
@@ -82,8 +82,8 @@
 
 		// initial map options
 		var options = {
-            center: [0, 0],
-            zoom: 2
+            center: [38.3840, -94.3809],
+            zoom: 4
         }
 		
 		// instantiate Leaflet map object
@@ -97,8 +97,10 @@
         map.addLayer(tiles);
         
         var cities = ['Columbia', 'Seattle', 'San Diego'];
-        var cityCoords = [34.0007, -81.0348], [47.6062, -122.3321], [32.7157, -117.1611]         
-        var cityPops = [4896146, 684451, 1394928]
+        var cityCoords = [
+            [34.0007, -81.0348], [47.6062, -122.3321], [32.7157, -117.1611]
+            ]
+        var cityPops = [133803, 3733580, 1394928]
         var cityCapitals = [true, false, false]
         
         for (var i = 0; i < cities.length; i++) {
@@ -107,19 +109,23 @@
 
             var cityPop = cityPops[i];
             
-            var cityCoord = cityCoords[i];
+            var cityCap = cityCapitals[i]
             
-            var nameAndPop = cityName + ' population:' + ' ' + cityPop;
+            var nameAndPop = cityName + ' has a population of' + ' ' + (cityPop.toLocaleString(cityPop));
                 console.log(nameAndPop);
+            
+            var popup = "<b>" + cityName + "</b><br>" +
+                    "<b>Population</b>: " + (cityPop.toLocaleString(cityPop)); 
+             
+            if (cityCap == true){
+             popup += "<br>Capital City";   
+        }        
+        
+            L.marker(cityCoords[i]).addTo(map)
+                .bindPopup(popup);
           
 }
-        var popup = "<b>" + cityName + "</b><br>" +
-                    "<b>Population</b>: " + cityPop; 
-                     
         
-            var cityCoords[i];
-                L.marker(cityCoord).addTo(map)
-                .bindPopup(popup);
             
             
         
