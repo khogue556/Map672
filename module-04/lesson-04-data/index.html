@@ -16,8 +16,272 @@
 
 
 <script>
-/* JavaScript code goes here! */
+                            /* JavaScript code goes here! */
 
+    var cities = ["Frankfort", "Louisville", "Lexington"];
+    console.log(cities.length);  // output will be 3 beacuse there are three values in the array        
+    var years = [2011, 2012, 2013, 2014, 2015, 2016];
+    var yearsNum = years.length;
+    console.log(yearsNum); // output will be 6 there are six values in the array
+    
+                            /*  "for" Loop  */
+    
+    console.log("before the Loop");
+    for (var i = 0; i < 5; i++) {
+       console.log(i); 
+    }  
+    console.log("after the loop");
+    
+    
+    for (var number = 0; number < 5; number++){
+        console.log(number);    //  output is same as above [0, 1, 2, 3, 4]  //
+                
+    }
+    
+        
+   for (var number = 0; number < 5; number = number + 1) {
+        console.log(number); //  output is same as above [0, 1, 2, 3, 4] Used number + 1 instead //
+
+   }
+    
+    var cities = ["Frankfort", "Louisville", "Lexington"]
+    for (var i = 0; i < cities.length; i++) {
+        console.log(i) // output the current value of i
+        console.log(cities[i])  // use i to access an index of the Array
+    }
+    //  output [0, Frankfort, 1, Louisville, 2, Lexington]  //  
+    //  codes first looks for the value of i and will loop as for as long as the lengh of the var cities, in this case there are 3 values in the array, 0-2.  Second part will access the array and display the name associated with that value of i.  if i = 0, display Frankfort.  If i = 1, then Louisville, if i = 2, then Lexington  //
+   /* 0
+    Frankfort
+    1
+    Louisville
+    2
+    Lexington  */
+    
+    var newArray = []  //  empty array  //
+    for (var i = 0; i < 10; i++) {
+        newArray[i] = i + 1;
+    }
+        console.log(newArray);  // output will be [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    
+    
+    for (var i = 0; i < 5; i++) {
+        console.log('outer loop: ' + i);
+        for (var j = 0; j < 5; j++){
+            console.log('inner loop: ' + j);
+        }
+    }
+    
+    // Output from above  //
+    //  index.html:69 outer loop: 0
+/*index.html:71 inner loop: 0
+index.html:71 inner loop: 1
+index.html:71 inner loop: 2
+index.html:71 inner loop: 3
+index.html:71 inner loop: 4
+index.html:69 outer loop: 1
+index.html:71 inner loop: 0
+index.html:71 inner loop: 1
+index.html:71 inner loop: 2
+index.html:71 inner loop: 3
+index.html:71 inner loop: 4
+index.html:69 outer loop: 2
+index.html:71 inner loop: 0
+index.html:71 inner loop: 1
+index.html:71 inner loop: 2
+index.html:71 inner loop: 3
+index.html:71 inner loop: 4
+index.html:69 outer loop: 3
+index.html:71 inner loop: 0
+index.html:71 inner loop: 1
+index.html:71 inner loop: 2
+index.html:71 inner loop: 3
+index.html:71 inner loop: 4
+index.html:69 outer loop: 4
+index.html:71 inner loop: 0
+index.html:71 inner loop: 1
+index.html:71 inner loop: 2
+index.html:71 inner loop: 3
+index.html:71 inner loop: 4*/
+    
+    
+                                //  Classic Comp Sci test qustion  //
+    var sum = 0;
+    for (var i = 0; i < 5; i++) {
+        for (var j = 0; j < 5; j++) {
+            sum += j;
+        }
+        sum += i;
+}
+console.log(sum);  // output will be 60.
+                            
+    
+                            //  "while" Loop  //
+    
+    var cities = ['Frankfort', 'Louisville', 'Lexington'];
+    var i = 0;
+    while (i < cities.length) {
+        console.log(i);
+        console.log(cities[i]);
+        i++
+    }
+   //  output from above  // 
+/*index.html:124 0
+index.html:125 Frankfort
+index.html:124 1
+index.html:125 Louisville
+index.html:124 2
+index.html:125 Lexington*/
+//  So this logs values of the var cities until cities.length is no longer true.  So it stops loop once i++ > 2 //
+
+                            //  the 'if' and 'else' statements  //
+    
+    var temp = 32;
+    if(temp === 32) {
+        console.log('the temperature is freezing');
+    }
+    //  32 is equal to the value of temp so output is the temperature is freezinng //
+    
+    //  testing where temp is not 33  //
+    var temp = 33
+    if (temp === 32) {
+        console.log('the temperature is freezing');
+    }
+    //  no output because temp does not trigger the if statement //
+    
+    var temp = 32
+    if (temp === 32) {
+        console.log('the temperature is freezing');
+    } else {
+        console.log('the temperature is NOT 32, but still may be freezing')
+        
+    }
+    //  output 'the temp is freezing' because temp = 32, else statement is not triggered //
+    
+    var temp = 33
+    if (temp === 32) {
+        console.log('the temperature is freezing');
+    } else {
+        console.log('the temperature is NOT 32 but still may be freezing');
+    }
+    //  else statement triggered //
+    
+    var temp = 33
+    if (temp <= 32) {
+        console.log('the temperature is freezing');
+    } else if(temp > 32) {
+        console.log('the temperature is above')
+    } else {
+        console.log('the value of temp is not a number')
+    }
+    
+    for(var i = 0; i <= 10; i++) {
+    if(i === 5) {
+        break;
+    }
+    console.log(i); // out will be 1 2 3 4
+}
+    
+    var cities = ["Frankfort", "Louisville", "Lexington"];
+    var testCity = "Louisville";
+    for (var i = 0; i < cities.length; i++) {
+        if(cities[i] == testCity) {
+            console.log(testCity + " is found in the city Array!");
+    }
+}
+    //  output is Louisville is found in array because the loop cycled through and found the testCity of Louisville in the array, as i = 1  //  
+    
+    var cities = ["Frankfort", "Louisville", "Lexington"];
+    var testCity = "Louisville";
+    for (var i = 0; i < cities.length; i++) {
+        if(cities[i] == testCity) {
+            console.log(testCity + " is found in the city Array at index "+ i+ "!");
+    }
+}
+    //  logs the index of the testCity by adding i in the last line  //
+    
+   
+    
+    var cities = ["Frankfort", "Louisville", "Lexington"];
+    var testCity = "Bowling Green";
+    for (var i = 0; i < cities.length; i++) {
+        if(cities[i] == testCity) {
+            console.log(testCity + " is found in the city Array at index "+ i+ "!");
+    } else {
+            console.log(testCity + " was not found within the Array at index "+ i+ "!");
+    }
+}
+    //  'Bowiling Green no found in the array' at any index  //
+    
+    
+    
+    var years = [2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015];
+    for(var i = 0; i <= years.length; i++) {
+        if(years[i] == 2012) {
+            break;
+        }   else {
+            console.log(years[i]);
+        }
+}
+    
+                            //  Lab 04 setup  //
+    
+    var cities = ["Lexington", "Louisville", "Frankfort"];
+    var cityPops = [308428, 756832, 25527];
+
+    for (var i = 0; i < cities.length; i++) {
+
+        console.log(cities[i]);
+
+        console.log(cityPops[i]);
+
+}
+    // output - city name above city population  //
+/*index.html:230 Lexington
+index.html:232 308428
+index.html:230 Louisville
+index.html:232 756832
+index.html:230 Frankfort
+index.html:232 25527*/
+    
+    
+    var cities = ["Lexington", "Louisville", "Frankfort"];
+    var cityPops = [308428, 756832, 25527];
+
+    for (var i = 0; i < cities.length; i++) {
+
+        var cityName = cities[i];
+
+        console.log(cityName);
+
+        var cityPop = cityPops[i];
+
+        console.log(cityPop);
+
+}
+    //  output same as above.  Used variables cityName and cityPops instead of cities[i] and cityPops[i]  //
+    
+    var cities = ["Lexington", "Louisville", "Frankfort"];
+    var cityPops = [308428, 756832, 25527];
+
+        for (var i = 0; i < cities.length; i++) {
+
+        var cityName = cities[i];
+
+        var cityPop = cityPops[i];
+
+        var nameAndPop = cityName + ' population:' + ' ' + cityPop;
+
+        console.log(nameAndPop);
+
+}
+    //  output  //
+    
+/*index.html:271 Lexington population: 308428
+index.html:271 Louisville population: 756832
+index.html:271 Frankfort population: 25527*/
+    
+    
 </script>
     
 </body>

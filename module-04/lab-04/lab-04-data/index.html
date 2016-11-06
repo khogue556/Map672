@@ -95,7 +95,35 @@
 });
 		// add tiles to map
         map.addLayer(tiles);
+        
+        var cities = ['Columbia', 'Seattle', 'San Diego'];
+        var cityCoords = [34.0007, -81.0348], [47.6062, -122.3321], [32.7157, -117.1611]         
+        var cityPops = [4896146, 684451, 1394928]
+        var cityCapitals = [true, false, false]
+        
+        for (var i = 0; i < cities.length; i++) {
+
+            var cityName = cities[i];
+
+            var cityPop = cityPops[i];
             
+            var cityCoords = cityCoords[i];
+            
+            var nameAndPop = cityName + ' population:' + ' ' + cityPop;
+                console.log(nameAndPop);
+          
+}
+        var popup = "<b>" + cities[i] + "</b><br>" +
+                    "<b>Population</b>: " + cityPops[i]; 
+                     
+        
+            var cityCoords[i];
+                L.marker(cityCoords[i]).addTo(map)
+                .bindPopup(popup);
+            
+            
+        
+        /*    
 		// variable to hold string value of city name
 		var cityName = "Denver";
 		
@@ -109,8 +137,9 @@
         // create a Leaflet marker at the coordinates of Denver, CO
 		// add it to the map
 		// and bind the popup content to the marker.
-        L.marker([39.74, -104.99]).addTo(map)
-			.bindPopup(popup);
+        var cityCoords = [39.74, -104.99]
+        L.marker(cityCoords).addTo(map)
+			.bindPopup(popup);*/
               
     </script>
     
