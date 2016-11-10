@@ -6,147 +6,128 @@
     <title>Cities -- East and West</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css" />
-	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
-	<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
 
-	<style>
-		body {
-			margin: 0;
-			padding: 0;
-			background: #1b952e;
-			font-family: "Noto Sans", sans-serif;
-			color: #fffdfc;
-		}
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #1b952e;
+            font-family: "Noto Sans", sans-serif;
+            color: #fffdfc;
+        }
 
-    	section {
-			width: 960px;
-			margin: 20px auto;
-		}
+        section {
+            width: 960px;
+            margin: 20px auto;
+        }
 
-		h1 {
-			width: 960px;
-			margin: 20px auto;
-			font-family: "Lora", serif;
-			letter-spacing: .04em;
-		}
+        h1 {
+            width: 960px;
+            margin: 20px auto;
+            font-family: "Lora", serif;
+            letter-spacing: .04em;
+        }
 
-		h2 {
-			font-family: "Lora", serif;
-			letter-spacing: .04em;
-		}
+        h2 {
+            font-family: "Lora", serif;
+            letter-spacing: .04em;
+        }
 
-		p {
-			font-size: 1em;
-			line-height: 1.5em;
-		}
+        p {
+            font-size: 1em;
+            line-height: 1.5em;
+        }
 
-		a {
-			color: #005daa;
-      		font-weight: bold;
-			text-decoration: none;
-		}
+        a {
+            color: #005daa;
+            font-weight: bold;
+            text-decoration: none;
+        }
 
-		a:hover {
-			text-decoration: underline;
-		}
-		#map {
-		  width: 960px;
-		  height: 540px;
-		  margin: 10px auto;
-		  border: 2px solid #d3d3d3;
-		}
-	</style>
+        a:hover {
+            text-decoration: underline;
+        }
+
+        #map {
+            width: 960px;
+            height: 540px;
+            margin: 10px auto;
+            border: 2px solid #d3d3d3;
+        }
+    </style>
 </head>
 
 <body>
 
-	<h1>Cities -- East and West</h1>
+    <h1>Cities -- East and West</h1>
 
     <div id='map'></div>
 
-	<section>
-		
-		<h2>Map Info</h2>
-		
-		<p>Map authored by Kevin Hogue for New Maps Plus, MAP 276 - fall 2016</p>
+    <section>
 
-		<p>Population data from US Census 2105 estimate</p>
+        <h2>Map Info</h2>
 
-	</section>
-	
-	<script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+        <p>Map authored by Kevin Hogue for New Maps Plus, MAP 276 - fall 2016</p>
+
+        <p>Population data from US Census 2105 estimate</p>
+
+    </section>
+
+    <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
     <script>
-
-		// initial map options
-		var options = {
+        // initial map options
+        var options = {
             center: [38.3840, -94.3809],
             zoom: 4
         }
-		
-		// instantiate Leaflet map object
+
+        // instantiate Leaflet map object
         var map = L.map('map', options);
-        
-		// request remote basemap tiles
-		var tiles = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
-	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
-});
-		// add tiles to map
+
+        // request remote basemap tiles
+        var tiles = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+            attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
+        });
+        // add tiles to map
         map.addLayer(tiles);
-        
+
         var cities = ['Columbia', 'Seattle', 'San Diego'];
         var cityCoords = [
-            [34.0007, -81.0348], [47.6062, -122.3321], [32.7157, -117.1611]
-            ]
+            [34.0007, -81.0348],
+            [47.6062, -122.3321],
+            [32.7157, -117.1611]
+        ]
         var cityPops = [133803, 3733580, 1394928]
         var cityCapitals = [true, false, false]
-        
+
         for (var i = 0; i < cities.length; i++) {
 
             var cityName = cities[i];
 
             var cityPop = cityPops[i];
-            
+
             var cityCap = cityCapitals[i]
-            
+
             var nameAndPop = cityName + ' has a population of' + ' ' + (cityPop.toLocaleString(cityPop));
-                console.log(nameAndPop);
-            
+            console.log(nameAndPop);
+
             var popup = "<b>" + cityName + "</b><br>" +
-                    "<b>Population</b>: " + (cityPop.toLocaleString(cityPop)); 
-             
-            if (cityCap == true){
-             popup += "<br>Capital City";   
-        }        
-        
+                "<b>Population</b>: " + (cityPop.toLocaleString(cityPop));
+
+            if (cityCap == true) {
+                popup += "<br>Capital City";
+            }
+
             L.marker(cityCoords[i]).addTo(map)
                 .bindPopup(popup);
-          
-}
-        
-            
-            
-        
-        /*    
-		// variable to hold string value of city name
-		var cityName = "Denver";
-		
-		// variable to hold number value of city population
-		var cityPopulation = 649495;
-        
-		// build a string with HTML tags and content
-        var popup = "<b>" + cityName + "</b><br>" +
-                    "<b>population</b>: " + cityPopulation;
 
-        // create a Leaflet marker at the coordinates of Denver, CO
-		// add it to the map
-		// and bind the popup content to the marker.
-        var cityCoords = [39.74, -104.99]
-        L.marker(cityCoords).addTo(map)
-			.bindPopup(popup);*/
-              
+        }
+
     </script>
-    
+
 </body>
