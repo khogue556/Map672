@@ -101,25 +101,19 @@
             [34.0007, -81.0348],
             [47.6062, -122.3321],
             [32.7157, -117.1611]
-        ]
-        var cityPops = [133803, 3733580, 1394928]
-        var cityCapitals = [true, false, false]
+        ];
+        var cityPops = [133803, 3733580, 1394928];
+        var cityCapitals = [true, false, false];
 
         for (var i = 0; i < cities.length; i++) {
 
-            var cityName = cities[i];
-
-            var cityPop = cityPops[i];
-
-            var cityCap = cityCapitals[i]
-
-            var nameAndPop = cityName + ' has a population of' + ' ' + (cityPop.toLocaleString(cityPop));
+            var nameAndPop = cities[i] + ' has a population of' + ' ' + (cityPops[i].toLocaleString());
             console.log(nameAndPop);
 
-            var popup = "<b>" + cityName + "</b><br>" +
-                "<b>Population</b>: " + (cityPop.toLocaleString(cityPop));
+            var popup = "<b>" + cities[i] + "</b><br>" +
+                "<b>Population</b>: " + (cityPops[i].toLocaleString(cityPops[i]));
 
-            if (cityCap == true) {
+            if (cityCapitals[i] == true) {
                 popup += "<br>Capital City";
             }
 
