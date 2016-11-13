@@ -13,6 +13,212 @@
 <script>
 /* JavaScript code goes here! */
 
+                            //  Writing functions declarations  //
+    
+    /*function helloMap() {
+        
+        console.log('Hello Map');
+    }
+
+    helloMap();  //  this is used to "call" the function.  The function is a stored piece of info "waiting" to be                  referenced by this action
+    helloMap();  // can be called multipule times
+    helloMap();*/
+    
+        
+    /*helloMap();  //  call the function above of the function  //
+    
+    function helloMap() {
+        
+        console.log('Hello Map');
+    }*/
+    
+                            //  Writing function expressions  //
+    
+    /*var helloMap = function() {
+        
+        console.log('hello map');
+    };
+        
+    helloMap();*/
+    
+   /* helloMap()  //  error on line 44 hello map is not a function  //
+    
+    var helloMap = function() {
+        
+        console.log('hello map');
+    };*/
+    
+    /*function outerFunction(message) {
+        console.log(message);
+        var innerFunction = function(message) {
+            console.log(message);
+        };
+        innerFunction("I’m inside!");
+    }
+    outerFunction("i'm outside!");  //  this will log first because it is outside the first function and is first to be called //*/
+    
+                            //  Passing arguments and using function parameters  //
+    
+    /*function saySomething(message) { // function signature accepts information as a "parameter"
+
+        console.log(message);
+    }
+    
+    saySomething('hello map');  // function is called, passing an "argument" with it.  the 'argument is the value of whatever is inside the (), string, number, etc*/
+    
+    /*function saySomething(message) {
+        console.log(message);
+        }
+
+    saySomething("Hello Map");
+    saySomething("Please enter the place you'd like to search for.");*/
+    
+    /*function saySomething(message) {
+        console.log(message);
+    }
+
+    var firstMessage = "Hello Map";
+    saySomething(firstMessage);
+
+    var secondMessage = "Enter the address you'd like to search for."
+    saySomething(secondMessage);*/
+    
+    
+    /*function saySomething(message) {
+        console.log(message);
+    }
+
+    var message = "Hello Map";
+    saySomething(message);
+
+    message = "Please enter the address you'd like to search"
+    saySomething(message);*/
+    
+                            //  calculate area //
+    
+   /* function calcAreaRect(width,height){
+        var area = width * height;
+        console.log(area);
+}
+    calcAreaRect(40,30);*/
+    
+    
+    /*function calcAreaRect(width,height){
+        var area = width * height;
+        console.log(area);
+    }
+
+        var width = 30;
+        var height = 30;
+        calcAreaRect(width,height);*/
+    
+    /*function calcAreaRect(width,height){
+    var area = width * height;
+        console.log(area);
+    }
+
+    var peanutButter = 10;
+    var jelly = 30
+    calcAreaRect(peanutButter,jelly);
+ //  peanutbutter and jelly variables exist outside the function body, therefore, when the function is called, the value of peantbutter is assigned to width within the function, and runs the w * h operation.  Same for jelly.  the names of the variables outside the function dont matter to the execution of the code, as long as the calcAreaRect part is refering or is the same as the 'sentence' in the function.  (which it has to be in order to call the function)  //*/
+    
+                            //  Return Values  //
+    
+    /*function calcAreaRect(width,height){
+        var area = width * height;
+        return area; 
+    }
+
+    var calculatedArea = calcAreaRect(40,30);  // <-- the return value is assigned to calculated Area
+    console.log(calculatedArea);*/
+    
+    /*function sayThings() {
+
+        console.log("thing 1"); // will output to console
+        console.log("thing 2"); // will output to console
+        return;                  // returns an `undefined` value
+        console.log("thing 3"); // will NOT output to console
+    }
+
+    sayThings(); // calls the function*/
+    
+    /*function getMultiValues() {
+        var value1 = 5;
+        var value2 = "iguana";
+        return [value1, value2];
+    }
+
+    var values = getMultiValues();
+    console.log(values[0]); // output is 5
+    console.log(values[1]); // output is "iguana"*/
+    
+                            //  Function scope  //    
+    
+    /*function sayHello (){
+        var greeting = "Hi, I’m a web mapper.";
+        console.log(greeting);
+    }
+
+    sayHello(); // function call
+    console.log(greeting); // throws an error on line 163, greeting is not defined.  This is to say it is not defined in the 'global scope', although it is defined in the scope of the function.  the string 'hi I'm a web mapper is loged into the console because the function is called.  //*/
+    
+    /*function sayHello(){
+        var greeting = "Hi, I’m a web mapper."; // variable defined within the function scope
+        console.log(greeting); // output is "Hi, I’m a web mapper"
+    }
+
+    sayHello();  // output is "Hi, I’m a web mapper"
+
+    var greeting = "Howdy, I'm a cartographer"; // variable defined within the global scope
+    console.log(greeting); // output is "Howdy, I'm a cartographer"
+    //  sayHello() outputs "hi, Im a web mapper" because it is calling the function and the var greeting is defined within that function.  "Howdy, ..." is logged as well because var greeting is defined in the global scope and has no association with the var inside the function body.  //*/
+    
+    /*function sayHello(){
+       console.log(greeting); 
+    }
+
+    var greeting = "Howdy, I'm a cartographer"; // variable defined within the global scope
+    sayHello();  // output is "Howdy, I'm a cartographer"
+    //  var greeting is defined in the global scope, before the function call.  therefore when the function is called by sayHello(), it logs "howdy, ..."  //*/
+    
+                            //  Example: functions and the "flow of execution"  //
+    
+    // we have three numbers
+var myNums = [1, 2, 3];
+
+// we want to log them to console
+// so we call a function and send them into that function
+logNumsToConsole(myNums);
+
+function logNumsToConsole(nums){
+  // function accepts that array as nums
+
+  //for all of our numbers stored within nums array
+  for(var i=0; i < nums.length; i++){
+    // loop through each, i is a counter for each loop
+
+    // before we log them, we want to double them
+    var doubleNumValue = doubleNum(nums[i]); // i here access each one
+
+    // THE NEXT LINE DOESN'T HAPPEN UNTIL ... the code within doubleNum runs!!!
+
+    // now we log them
+    console.log(doubleNumValue); // output is 2 4 6
+
+  }  // end for loop
+
+}  // end logNumsToConsole
+
+function doubleNum(num){
+
+  // for each number, we double it and return the value
+  return num * 2;
+
+} // end doubleNum
+    
+    
+    
+    
 </script>
     
 </body>
