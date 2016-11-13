@@ -76,11 +76,11 @@
 
 		<button id='map-cities'>Map Cities</button>
 
-		<h2>about this map</h2>
+		<h2>About this map</h2>
 
 		<p>Map authored by Kevin Hogue for New Maps Plus 672 Fall 2016</p>
 
-		<p>Additional information about <a href="#">the data</a> and map goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis urna magna, maximus nec laoreet sit amet, dictum ultricies nibh. Ut id auctor lacus. Nam a dolor et justo luctus luctus. </p>
+		<p>Population data from the US Census Bureau 2015 estimate.   <a href="#">the data</a>  </p>
 
 	</section>
 
@@ -90,8 +90,8 @@
 	<script>
 		// map options
 		var options = {
-			center: [20, -20],
-			zoom: 2
+			center: [35.8333, -98.5833],
+			zoom: 4
 		}
 
 		// creates the Leaflet map
@@ -114,18 +114,16 @@
         var cityPops = [682545, 137447, 677116]
         var cityArea = [155, 127.5, 142.87]
            
-        //    var cities = // write 3 city names as Strings within an array
-		//    var cityCoords = // write a two-dimensional array of the coordinates for each city
-		//    var cityPops = // write the populations of the 3 cities as Numbers within an array;
-		//    var cityAreas = // write the areas of the 3 cities as Numbers within an array;
-
-		var button = document.getElementById("map-cities");
+        var button = document.getElementById("map-cities");
 
 		button.addEventListener("click", function () {
 
 			var units = prompt('Enter the units for calculating density', 'Enter "miles" or "km"');
+            
 
-			mapCities(units);
+			console.log(units)
+            
+            mapCities(units);
 
 			// call a function named mapCities, and send the units variable as an argument
 
@@ -139,21 +137,56 @@
 
             var cityPop = cityPops[i];
             
-            var cityArea = cityAreas[i];
+            var cityArea = cityArea[i];
             
-            var units = ['miles', 'km']
-                
-            calcPopDensity(population, area, units)
-            
-            }};
+            var density = cityPops[i]/cityArea[i]
+                        
+            console.log(calcPopDensity(cityPop, cityArea, units));
+            }
+        };
        
-        function calcPopDensity(population, area, units){
+       
+        function calcPopDensity(cityPops, cityArea, units){
             
-            var popDensity =
+            if (units==="miles") 
+            {
+                var density = cityPops/cityArea;
+                return density;
+            } 
+
+            else if (units==="km") 
+            {
+                var kmarea = cityArea * 2.589;
+                var kmdensity = cityPops/kmarea;
+                return kmdensity;
+            }
+
         }
-		
+           
+         
         
+       for (var i = 0; i < cities.length; i++) {
+
+            var cityName = cities[i];
+
+            var cityPop = cityPops[i];
+            
+            var density = cityPops[i]/cityArea[i]
+            
+            var nameAndPop = cityName + ' has a population density of' + ' ' + (density.toLocaleString(density));
+                console.log(nameAndPop);
+            
+            var popup = "<b>" + cityName + "</b><br>" +
+                    "<b>Population Density</b>: " + (density.toLocaleString(density)); 
+              
+           L.marker(cityCoords[i]).addTo(map)
+                .bindPopup(popup);
+             
+        }
         
+           
+      
+
         // write a function here named mapCities so that it accepts units as a parameter
 
 
