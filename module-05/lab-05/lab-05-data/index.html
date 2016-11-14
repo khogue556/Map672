@@ -110,9 +110,9 @@
 		var cities = ['Denver', 'Charleston', 'Detroit'];
         var cityCoords = [
             [39.7392, -104.9903], [32.7765, -79.9311], [42.3314, -83.0458]
-            ]
-        var cityPops = [682545, 137447, 677116]
-        var cityArea = [155, 127.5, 142.87]
+            ];
+        var cityPops = [682545, 137447, 677116];
+        var cityArea = [155, 127.5, 142.87];
            
         var button = document.getElementById("map-cities");
 
@@ -124,7 +124,7 @@
             
             } while (units != "miles" && units !="km")
                 
-            console.log(units)
+            console.log(units);
             
             mapCities(units);
 
@@ -142,11 +142,11 @@
             
             var cityArea = cityAreas[i];
             
-            var density = cityPops[i]/cityAreas[i]
+            var density = cityPops[i]/cityAreas[i];
                         
             calcPopDensity(cityPop, cityArea, units);
             
-            }
+            };
         };
        
        
@@ -175,7 +175,7 @@
 
             var cityPop = cityPops[i];
             
-            var density = cityPops[i]/cityArea[i]
+            var density = cityPops[i]/cityArea[i];
             
             var nameAndPop = cityName + ' has a population density of' + ' ' + (density.toLocaleString(density));
                 console.log(nameAndPop);
