@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset=utf-8 />
-	<title>Lab 05 Solution</title>
+	<title>American Cities</title>
 	<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css" />
@@ -15,7 +15,7 @@
 		body {
 			margin: 0;
 			padding: 0;
-			background: whitesmoke;
+			background: #99d9e5;
 			font-family: "Noto Sans", sans-serif;
 			color: #3d3d3d;
 		}
@@ -67,7 +67,7 @@
 </head>
 
 <body>
-	<h1>map title</h1>
+	<h1>American Cities</h1>
 
 	<div id='map'></div>
 
@@ -80,7 +80,7 @@
 
 		<p>Map authored by Kevin Hogue for New Maps Plus 672 Fall 2016</p>
 
-		<p>Population data from the US Census Bureau 2015 estimate.   <a href="#">the data</a>  </p>
+		<p>Population data from the US Census Bureau 2015 estimate.</p>
 
 	</section>
 
@@ -117,11 +117,14 @@
         var button = document.getElementById("map-cities");
 
 		button.addEventListener("click", function () {
-
+            
+            do{
+            
 			var units = prompt('Enter the units for calculating density', 'Enter "miles" or "km"');
             
-
-			console.log(units)
+            } while (units != "miles" && units !="km")
+                
+            console.log(units)
             
             mapCities(units);
 
@@ -137,16 +140,17 @@
 
             var cityPop = cityPops[i];
             
-            var cityArea = cityArea[i];
+            var cityArea = cityAreas[i];
             
-            var density = cityPops[i]/cityArea[i]
+            var density = cityPops[i]/cityAreas[i]
                         
-            console.log(calcPopDensity(cityPop, cityArea, units));
+            calcPopDensity(cityPop, cityArea, units);
+            
             }
         };
        
        
-        function calcPopDensity(cityPops, cityArea, units){
+        function calcPopDensity(cityPops, cityAreas, units){
             
             if (units==="miles") 
             {
@@ -177,7 +181,7 @@
                 console.log(nameAndPop);
             
             var popup = "<b>" + cityName + "</b><br>" +
-                    "<b>Population Density</b>: " + (density.toLocaleString(density)); 
+                    "<b>Population Density</b>: " + (density.toLocaleString()); 
               
            L.marker(cityCoords[i]).addTo(map)
                 .bindPopup(popup);
@@ -185,8 +189,6 @@
         }
         
            
-      
-
         // write a function here named mapCities so that it accepts units as a parameter
 
 
