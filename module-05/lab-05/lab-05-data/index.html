@@ -19,46 +19,46 @@
 			font-family: "Noto Sans", sans-serif;
 			color: #3d3d3d;
 		}
-		
+
 		section {
 			width: 960px;
 			margin: 20px auto;
 		}
-		
+
 		h1 {
 			width: 960px;
 			margin: 20px auto;
 			font-family: "Lora", serif;
 			letter-spacing: .04em;
 		}
-		
+
 		h2 {
 			font-family: "Lora", serif;
 			letter-spacing: .04em;
 		}
-		
+
 		p {
 			font-size: 1em;
 			line-height: 1.5em;
 		}
-		
+
 		a {
 			color: #005daa;
 			font-weight: bold;
 			text-decoration: none;
 		}
-		
+
 		a:hover {
 			text-decoration: underline;
 		}
-		
+
 		#map {
 			width: 960px;
 			height: 540px;
 			margin: 10px auto;
 			border: 2px solid #d3d3d3;
 		}
-		
+
 		button {
 			font-size: 1.2em;
 			/*            margin: 10px auto;*/
@@ -108,95 +108,63 @@
 		map.addLayer(tiles);
 
 		var cities = ['Denver', 'Charleston', 'Detroit'];
-        var cityCoords = [
-            [39.7392, -104.9903], [32.7765, -79.9311], [42.3314, -83.0458]
-            ];
-        var cityPops = [682545, 137447, 677116];
-        var cityArea = [155, 127.5, 142.87];
-           
-        var button = document.getElementById("map-cities");
+		var cityCoords = [
+			[39.7392, -104.9903],
+			[32.7765, -79.9311],
+			[42.3314, -83.0458]
+		];
+		var cityPops = [682545, 137447, 677116];
+		var cityArea = [155, 127.5, 142.87];
 
-		button.addEventListener("click", function () {
-            
-            do{
-            
-			var units = prompt('Enter the units for calculating density', 'Enter "miles" or "km"');
-            
-            } while (units != "miles" && units !="km")
-                
-            console.log(units);
-            
-            mapCities(units);
+		var button = document.getElementById("map-cities");
+
+		button.addEventListener("click", function() {
+
+			do {
+
+				var units = prompt('Enter the units for calculating density', 'Enter "miles" or "km"');
+
+			} while (units != "miles" && units != "km")
+
+			console.log(units);
+
+			mapCities(units);
 
 			// call a function named mapCities, and send the units variable as an argument
 
 		}); // addEventListener callback function ends here
 
-        function mapCities(units) {
-            
-            for (var i = 0; i < cities.length; i++) {
+		function mapCities(units) {
 
-            var cityName = cities[i];
+			for (var i = 0; i < cities.length; i++) {
 
-            var cityPop = cityPops[i];
-            
-            var cityArea = cityAreas[i];
-            
-            var density = cityPops[i]/cityAreas[i];
-                        
-            calcPopDensity(cityPop, cityArea, units);
-            
-            };
-        };
-       
-       
-        function calcPopDensity(cityPops, cityAreas, units){
-            
-            if (units==="miles") 
-            {
-                var density = cityPops/cityArea;
-                return density;
-            } 
+				var density = calcPopDensity(cityPops[i], cityArea[i], units);
 
-            else if (units==="km") 
-            {
-                var kmarea = cityArea * 2.589;
-                var kmdensity = cityPops/kmarea;
-                return kmdensity;
-            }
+				console.log(density)
 
-        }
-           
-         
-        
-       for (var i = 0; i < cities.length; i++) {
+				var popup = "<b>" + cities[i] + "</b><br>" +
+					"<b>Population Density</b>: " + (density.toLocaleString());
 
-            var cityName = cities[i];
+				L.marker(cityCoords[i]).addTo(map)
+					.bindPopup(popup);
 
-            var cityPop = cityPops[i];
-            
-            var density = cityPops[i]/cityArea[i];
-            
-            var nameAndPop = cityName + ' has a population density of' + ' ' + (density.toLocaleString(density));
-                console.log(nameAndPop);
-            
-            var popup = "<b>" + cityName + "</b><br>" +
-                    "<b>Population Density</b>: " + (density.toLocaleString()); 
-              
-           L.marker(cityCoords[i]).addTo(map)
-                .bindPopup(popup);
-             
-        }
-        
-           
-        // write a function here named mapCities so that it accepts units as a parameter
+			};
+		};
 
 
-		// write a function named calcPopDensity here so that it accepts a 
-		// single city's population, area, and the value for units 
-		// determined by the user
+		function calcPopDensity(cityPop, cityArea, units) {
+
+			if (units === "miles") {
+
+				return cityPop / cityArea;
+
+			} else if (units === "km") {
+				var kmarea = cityArea * 2.589;
 		
-		
+				return cityPops / kmarea;
+			}
+
+		}
 	</script>
 
 </body>
