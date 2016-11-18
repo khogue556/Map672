@@ -13,7 +13,338 @@
 <script>
 /* JavaScript code goes here! */
 
+    var myObject = {};  // declare and define an empty object
+        console.log(myObject);
+    
+    var iguana = {
+        name: "Jack",   // a string value
+        weight: 4.2,    // a numeric value, assume kilograms
+        age: 8,         // a numeric value
+        eyes: "dreamy", // a string value
+        questForWorldDomination: true  // a boolean value
+}
+console.log(iguana);
+    
+    var iguana = {
+        questForWorldDomination: true,  
+        age: 8,
+        eyes: "dreamy",
+        name: "Jack",
+        weight: 4.2 // assume kilograms
+}
+console.log(iguana);  //  same as above, different order //
+    
+    
+                            //  Nesting objects  //
+    var iguana = {
+        questForWorldDomination: true,  
+        age: 8,
+        eyes: "dreamy",
+        name: "Jack",
+        weight: 4.2,
+        toolkit: {
+            conquestFlag: "red",
+            surrenderFlag: "white",
+            food: true,
+            music: "Anthrax",
+            coolSunGlasses: 8
+    }
+}
+console.log(iguana);
+    
+                            //  accessing objects with dots notation  //
+    var iguana = {
+        name: "Jack",
+        weight: 4.2, // assume kilograms
+        age: 8,
+        eyes: "dreamy",
+        questForWorldDomination: true  
+}
+console.log(iguana.name); // output "Jack"
+console.log(iguana.weight); // output 4.2
+    
+                            //  accessing the nested objects with the dots notation  //
+    var iguana = {
+        questForWorldDomination: true,  
+        age: 8,
+        eyes: "dreamy",
+        name: "Jack",
+        weight: 4.2,
+        toolkit: {
+            conquestFlag: "red",
+            surrenderFlag: "white",
+            food: true,
+            music: "Anthrax",
+            coolSunGlasses: 8
+    }
+}
+console.log(iguana.toolkit.music); // will output "Anthrax"
+    
+                            //  accessing the objects using bracket notation  //
+//  write the property name with quotation marks around it  //
+    var iguana = {
+        name: "Jack",
+        weight: 4.2, // assume kilograms
+        age: 8,
+        eyes: "dreamy",
+        questForWorldDomination: true
+}
+console.log(iguana["name"]); // output "Jack"
+console.log(iguana["weight"]); // output 4.2
+console.log(iguana["age"]);  //  output 8
+    
+                            //  accessing the nested object using bracket notation //
+//  write the property name with quotation marks around it  //
+    var iguana = {
+        questForWorldDomination: true,  
+        age: 8,
+        eyes: "dreamy",
+        name: "Jack",
+        weight: 4.2,
+        toolkit: {
+            conquestFlag: "red",
+            surrenderFlag: "white",
+            food: true,
+            music: "Anthrax",
+            coolSunGlasses: 8
+    }
+}
+console.log(iguana["toolkit"]["music"]); // will output Anthrax:
+console.log(iguana["toolkit"].coolSunGlasses); // will output 8
+    
+                            //  Updating JavaScript Object Properties using dot notation //
+    var iguana = {
+        name: "Jack",
+        weight: 4.2, // assume kilograms
+        age: 8,
+        eyes: "dreamy",
+        questForWorldDomination: true
+}
+console.log(iguana.weight); // output 4.2
+console.log(iguana.age); // output 8
 
+iguana.weight = 5.2;
+iguana.age = 9;
+
+console.log(iguana.weight); // output 5.2
+console.log(iguana.age); // output 9
+    
+    
+                            //  Updating JavaScript Object Properties using bracket notation //
+//  write the property name with quotation marks around it  //    
+    var iguana = {
+        name: "Jack",
+        weight: 4.2, // assume kilograms
+        age: 8,
+        eyes: "dreamy",
+        questForWorldDomination: true
+}
+console.log(iguana.weight); // output 4.2
+console.log(iguana.age); // output 8
+
+iguana["weight"] = 6.1;
+iguana["age"] = 10;
+
+console.log(iguana.weight); // output 6.1
+console.log(iguana.age); // output 10
+                            
+    
+                            //  Add properties using dot notation  //
+    var iguana = {
+        name: "Jack",
+        weight: 4.2, // assume kilograms
+        age: 8,
+        eyes: "dreamy",
+        questForWorldDomination: true
+}
+console.log(iguana); 
+
+iguana.color = "green";
+iguana.madGenius = true;
+
+console.log(iguana); 
+    
+    
+                            //  add properties using bracket notation  //
+    var iguana = {
+        name: "Jack",
+        weight: 4.2, // assume kilograms
+        age: 8,
+        eyes: "dreamy",
+        questForWorldDomination: true
+}
+console.log(iguana); 
+
+iguana["color"] = "purple";
+iguana["unlovedAsBaby"] = true; // hence his need to compensate
+
+console.log(iguana); 
+    
+                            //  Looping through objects  //
+//  object’s property names (its keys) to the console    
+    var iguana = {
+        name: "Jack",
+        weight: 4.2, // assume kilograms
+        age: 8,
+        eyes: "dreamy",
+        questForWorldDomination: true
+}
+
+    for (var key in iguana) {
+        console.log(key); // outputs "name", "weight", "age", "eyes", "questForWorldDomination"
+}
+   
+    
+ //  access the values associated with each of those properties using our bracket notation                          
+    var iguana = {
+        name: "Jack",
+        weight: 4.2, // assume kilograms
+        age: 8,
+        eyes: "dreamy",
+        questForWorldDomination: true
+}
+
+    for (var key in iguana) {
+        console.log(iguana[key]); // outputs "Jack", 4.2, 8, "dreamy", true
+}
+  
+    
+//  Logging both the key and the key's value  //
+    var iguana = {
+        name: "Jack",
+        weight: 4.2, // assume kilograms
+        age: 8,
+        eyes: "dreamy",
+        questForWorldDomination: true
+}
+
+    for (var key in iguana) {
+        console.log(key, iguana[key]);
+}
+                            //  JavaScript methods  //
+    var iguana = {
+        name: "Jack",
+        weight: 4.2,
+        age: 8,
+        eyes: "dreamy",
+        questForWorldDomination: true,
+        greeting: function() { // new property name called greeting and assign a function as its value
+            console.log("Hello. I am your new overlord.");
+    }
+}
+
+iguana.greeting();  //  to call or invoke this function, 
+                    //  attach the method call to the object using dot notation
+                    //  output is 'hello. I am your new overlord.'  //
+
+    var iguana = {
+        name: "Jack",
+        weight: 4.2,
+        age: 8,
+        eyes: "dreamy",
+        questForWorldDomination: true,
+        greeting: function(message) {   //  this object method to accept a message as a parameter
+                                        //  and send that message as an argument when we call the method:
+            console.log(message);
+    }
+}
+
+    iguana.greeting("Howdy there.");  // output is Howdy there.
+    iguana.greeting("I am your new overlord.")  // output is I am your new overlord
+    
+    
+    var iguana = {
+        name: "Jack",
+        weight: 4.2, // kilos
+        length: 1.5, // meters
+        age: 8,
+        eyes: "dreamy",
+        questForWorldDomination: true,
+        calculateBMI: function(w,l) {
+            return w / (l*l); 
+    }
+}
+    var result = iguana.calculateBMI(4.2,1.5);
+    console.log(result); // output is 1.86666667
+    
+    
+    var iguana = {
+        name: "Jack",
+        weight: 4.2, // kilos
+        length: 1.5, // meters
+        age: 8,
+        eyes: "dreamy",
+        questForWorldDomination: true,
+        calculateBMI: function() {
+            var w = this.weight; //  object iguana here already "knows" its own values of weight and length. 
+                                 //  We don’t have to send those values into the function when we call it
+            var l = this.length;
+            return w/(l*l);
+    }
+}
+
+    var result = iguana.calculateBMI();
+    console.log(result); // output is still 1.87
+    
+    
+    var iguana = {
+        name: "Jack",
+        weight: 4.2,
+        age: 8,
+        eyes: "dreamy",
+        questForWorldDomination: true,
+        invasionPlans: function(inData) {
+            // iguana can do something with data here
+            console.log(inData);
+    }
+}
+
+    var lexData = {
+        lat: 38.23,
+        lon: -89.21,
+        name: "Lexington",
+        pop: 821325
+
+}
+
+    iguana.invasionPlans(lexData);
+    
+                            //  Additional native JS methods  //
+    var cityName = "Lexington";
+        console.log(cityName);
+    var cityNameWithState = cityName.concat(", KY"); // concat method concatenates two Strings
+        console.log(cityNameWithState); // output is "Lexington, KY"
+
+    
+    var cityName = "Lexington";
+    var cityNameCaps = cityName.toUpperCase();
+        console.log(cityNameCaps); //output is LEXINGTON
+    
+    var cityName = "Lexington";
+        console.log(cityName.charAt(4)); // returns the String
+                                     // character at index 4, "n"
+        console.log(cityName.indexOf("x"));  // returns the index (2) of the
+                                        // first character found of "x"
+    
+    
+    var pop = 1200000;
+    var area = 683.24;
+    var density = pop/area;
+
+        console.log(density); // output is 1756.337450968913
+
+    var output = density.toLocaleString();
+
+        console.log(output); // output is 1,756.337
+    
+    var cities = ["Lexington", "Bowling Green"];
+    console.log(cities); // output is ["Lexington", "Bowling Green"]
+    cities.push("Frankfort");
+    console.log(cities); // output is ["Lexington", "Bowling Green", "Frankfort"]
+    cities.pop();
+    console.log(cities); // output is ["Lexington", "Bowling Green"]
+    
+    
 </script>
     
 </body>
