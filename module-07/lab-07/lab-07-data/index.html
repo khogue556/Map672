@@ -3,7 +3,7 @@
 
 <head>
     <meta charset=utf-8 />
-    <title>Lab 07 Template</title>
+    <title>Salt Lake City's Red Iguana Restaurant</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css" />
@@ -70,14 +70,13 @@
 </head>
 
 <body>
-  <h1>This is the title to my awesome map.</h1>
+  <h1>Salt Lake City's Red Iguana Restaurant</h1>
 
  <div id='map'></div>
 
  <section>
-   <h2>about this map</h2>
-
-   <p>Map authored by me, MY NAME</p>
+   
+    <p>Map authored Kevin Hogue for New Maps Plus 672, fall 2016</p>
 
    <p>Additional information about <a href="#">the data</a> and map goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis urna magna, maximus nec laoreet sit amet, dictum ultricies nibh. Ut id auctor lacus. Nam a dolor et justo luctus luctus. </p>
 
@@ -87,7 +86,12 @@
   	<script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
     <script>
 
-    var options = {
+    var tiles = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
+});
+
+
+        var options = {
         center: [40.74,-110.61],
         zoom: 6
     }
@@ -95,7 +99,7 @@
     var map = L.map('map', options);
 
     var redIguana = L.latLng(40.7718,-111.9124);
-
+   
     L.marker(redIguana, {
         icon : L.icon({
             iconUrl: 'red_iguana.png',
@@ -103,12 +107,22 @@
         })
     }).addTo(map);
 
-    map.on('click', function(e){
+    
+    var newMarker = map.on('click', function(e){
 
         console.log(e.latlng);
 
     });
 
+   L.marker(newMarker, {
+       draggable: true
+
+   }).addTo(map);     
+        
+   
+        
+    map.addLayer(tiles); 
+        
     </script>
 
 </body>
