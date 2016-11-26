@@ -96,6 +96,7 @@
         zoom: 6
     }
 
+            
     var map = L.map('map', options);
 
     var redIguana = L.latLng(40.7718,-111.9124);
@@ -109,15 +110,14 @@
 
     
     var newMarker = map.on('click', function(e){
-
         console.log(e.latlng);
-
     });
 
-   L.marker(newMarker, {
+   var markerLocation = L.marker(newMarker, {
        draggable: true
+   }).addTo(map);
 
-   }).addTo(map);     
+    
         
    
         
