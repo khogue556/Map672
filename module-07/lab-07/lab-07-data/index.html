@@ -108,14 +108,34 @@
         })
     }).addTo(map);
 
+    var clickPoint = map.on('click', function(e) {
+        console.log(e.latlng);
+        
+        L.marker(e.latlng, {
+        draggable: true,
+        opacity: .7
+        }).addTo(map)
     
-    var newMarker = map.on('click', function(e){
+    var dragDistance = e.latlng.distanceTo(redIguana)
+        console.log(dragDistance)
+    
+});    
+    
+     
+            
+     /*var distance = clickPoint.distanceTo(redIguana);
+        console.log(distance);*/   
+    
+        
+        
+        //  old fucked up shit  //
+    /*var newMarker = map.on('click', function(e){
         console.log(e.latlng);
     });
 
    var markerLocation = L.marker(newMarker, {
        draggable: true
-   }).addTo(map);
+   }).addTo(map);*/
 
     
         
