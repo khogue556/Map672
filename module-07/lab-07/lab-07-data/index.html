@@ -110,16 +110,20 @@
 
     var clickPoint = map.on('click', function(e) {
         console.log(e.latlng);
-        
         L.marker(e.latlng, {
         draggable: true,
-        opacity: .7
-        }).addTo(map)
+        opacity: .5
+        }).addTo(map);
     
-    var dragDistance = e.latlng.distanceTo(redIguana)
-        console.log(dragDistance)
+    var dragDistance = e.latlng.distanceTo(redIguana);
+        console.log(dragDistance);
+   
     
-});    
+        
+    dragDistance.setPopupContent(dragDistance + " km from Red Iguana").openPopup();
+        
+            
+    });    
     
      
             
@@ -128,7 +132,7 @@
     
         
         
-        //  old fucked up shit  //
+        //  old code  //
     /*var newMarker = map.on('click', function(e){
         console.log(e.latlng);
     });
