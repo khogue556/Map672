@@ -95,7 +95,7 @@
         center: [40.74,-110.61],
         zoom: 6
     }
-
+ 
             
     var map = L.map('map', options);
 
@@ -112,41 +112,34 @@
         console.log(e.latlng);
         L.marker(e.latlng, {
         draggable: true,
-        opacity: .5
-        }).addTo(map);
+        opacity: 1
+        })/*.addTo(map).bindPopup(popup).openPopup();*/
     
     var dragDistance = e.latlng.distanceTo(redIguana);
         console.log(dragDistance);
    
+    var popup = (dragDistance.toLocaleString() +" kilometers to the Red Iguana" );
+        
+    var marker = L.marker(e.latlng, {
+            draggable: true,
+            opacity: 1
+
+ }).addTo(map).bindPopup(popup).openPopup();  
+        
     
+    marker.on('dragend', function(e){
+
         
-    dragDistance.setPopupContent(dragDistance + " km from Red Iguana").openPopup();
-        
+    var draggable = new L.Draggable(dragDistance);
+            draggable.dragend().enable();
+
+     });  
             
-    });    
-    
-     
-            
-     /*var distance = clickPoint.distanceTo(redIguana);
-        console.log(distance);*/   
-    
-        
-        
-        //  old code  //
-    /*var newMarker = map.on('click', function(e){
-        console.log(e.latlng);
+     marker.getPopup().setContent(dragDistance.toLocaleString() +" kilometers to the Red Iguana");
     });
 
-   var markerLocation = L.marker(newMarker, {
-       draggable: true
-   }).addTo(map);*/
+        map.addLayer(tiles)
 
-    
-        
-   
-        
-    map.addLayer(tiles); 
-        
     </script>
 
 </body>
