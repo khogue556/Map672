@@ -15,9 +15,9 @@
   		body {
   			margin: 0;
   			padding: 0;
-  			background: whitesmoke;
+  			background: #ff0000;
   			font-family: "Noto Sans", sans-serif;
-  			color: #3d3d3d;
+  			color: #f5ff03;
   		}
 
       	section {
@@ -43,7 +43,7 @@
   		}
 
   		a {
-  			color: #005daa;
+  			color: #ffffff;
         		font-weight: bold;
   			text-decoration: none;
   		}
@@ -64,7 +64,7 @@
   		  width: 960px;
   		  height: 540px;
   		  margin: 10px auto;
-  		  border: 2px solid #d3d3d3;
+  		  border: 2px solid #ff0000;
   		}
   	</style>
 </head>
@@ -78,7 +78,7 @@
    
     <p>Map authored Kevin Hogue for New Maps Plus 672, fall 2016</p>
 
-   <p>Additional information about <a href="#">the data</a> and map goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis urna magna, maximus nec laoreet sit amet, dictum ultricies nibh. Ut id auctor lacus. Nam a dolor et justo luctus luctus. </p>
+   <p>Additional information about <a href="http://www.rediguana.com/">Red Iguana Restaurant</a> </p>
 
  </section>
 
@@ -118,7 +118,7 @@
     var dragDistance = e.latlng.distanceTo(redIguana);
         console.log(dragDistance);
    
-    var popup = (dragDistance.toLocaleString() +" kilometers to the Red Iguana" );
+    var popup = (dragDistance.toLocaleString() +" meters to the Red Iguana" );
         
     var marker = L.marker(e.latlng, {
             draggable: true,
