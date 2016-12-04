@@ -128,9 +128,9 @@ tiles.addTo(map);
     }
 }).addTo(map);*/
         
-        //  Natural Gas
+        //  Natural Gas Edited
         
-    /*L.geoJson(plants, {
+    L.geoJson(plants, {
     pointToLayer: function(feature,latlng) {
             return L.circleMarker(latlng, {
                 color: '#ff7600',
@@ -141,15 +141,32 @@ tiles.addTo(map);
             });   
     },
     filter: function(feature, layer) {
-        if(feature.properties.fuel_source['Natural Gas']){
+        if(feature.properties.fuel_source.Hydro){
             return feature;   
         }
+
+    
+    /*onEachFeature : function(feature, layer) {
+        layer.on('mouseover', function() {
+            layer.setStyle({
+                fillColor: 'red'
+        });
+});
+        layer.on('mouseout', function() {
+            layer.setStyle({
+            fillColor: 'yellow'
+        });
+});
+    
+        
+    layer.bindPopup('popup here');
+    }*/
     }
-}).addTo(map);   */
+}).addTo(map);   
         
         //  Coal
         
-    /*L.geoJson(plants, {
+  /*  L.geoJson(plants, {
     pointToLayer: function(feature,latlng) {
             return L.circleMarker(latlng, {
                 color: '#00ff3b',
@@ -210,7 +227,7 @@ tiles.addTo(map);
     //  Assignment  
     
         
-    L.geoJson(plants, {
+   /* L.geoJson(plants, {
     pointToLayer: function(feature,latlng) {
             return L.circleMarker(latlng, {
                 color: '#d8ff00',
@@ -226,8 +243,8 @@ tiles.addTo(map);
     {
         return feature;   
             }
-}
-}).addTo(map);
+    }
+}).addTo(map);*/
       
   
     
