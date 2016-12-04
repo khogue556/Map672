@@ -94,9 +94,9 @@
             center: [40.74, -110.61],
             zoom: 6
         }
-
-
         var map = L.map('map', options);
+
+        map.addLayer(tiles)
 
         var redIguana = L.latLng(40.7718, -111.9124);
 
@@ -108,36 +108,46 @@
         }).addTo(map);
 
         var clickPoint = map.on('click', function(e) {
-            console.log(e.latlng);
+
             L.marker(e.latlng, {
                 draggable: true,
                 opacity: 1
-            }) /*.addTo(map).bindPopup(popup).openPopup();*/
+            });
 
-            var dragDistance = e.latlng.distanceTo(redIguana);
-            console.log(dragDistance);
+            // calculate drag distance
+            var dragDistance = e.latlng.distanceTo(redIguana)/1000;
 
-            var popup = (dragDistance.toLocaleString() + " meters to the Red Iguana");
+            // build popup with distance info
+            var popup = dragDistance.toLocaleString() + " meters to the Red Iguana";
 
+            // add marker to map, bind and open popup
             var marker = L.marker(e.latlng, {
                 draggable: true,
                 opacity: 1
 
             }).addTo(map).bindPopup(popup).openPopup();
 
-
+            // when user is done dragging marker
             marker.on('dragend', function(e) {
 
+              // recalcualte the drag distance
+              dragDistance = marker.getLatLng().distanceTo(redIguana)/1000;
 
-                var draggable = new L.Draggable(dragDistance);
-                draggable.dragend().enable();
+              // rebuild the popup
+              popup = dragDistance.toLocaleString() + " meters to the Red Iguana";
+
+              // get marker popup, reset the content
+              marker.getPopup().setContent(dragDistance.toLocaleString() + " kilometers to the Red Iguana");
+
+              // open the popup
+              marker.openPopup();
 
             });
 
-            marker.getPopup().setContent(dragDistance.toLocaleString() + " kilometers to the Red Iguana");
+
         });
 
-        map.addLayer(tiles)
+
     </script>
 
 </body>
