@@ -3,7 +3,7 @@
 
 <head>
     <meta charset=utf-8 />
-    <title>Lab 08 Starter</title>
+    <title>US Power Plants</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
@@ -48,15 +48,15 @@
 
 <body>
     <header>
-        <h1>Map Title</h1>
-        <h2>Map Subtitle</h2>
+        <h1>US Power Plants</h1>
+        <h2>Coal Capacity</h2>
     </header>
 
     <div id='map'></div>
 
     <footer>
         <p>Map authored by Kevin Hogue for New Maps Plus, Fall 2016</p>
-        <p>Additional information about the data and map goes here.</p>
+        <p>Map displays US power plant production from coal.  Zoom and click to see coal capacity as well as total plant capacity</p>
     </footer>
     <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
     <script src="power-plants.js"></script>
@@ -83,9 +83,9 @@
     L.geoJson(plants, {
     pointToLayer: function(feature,latlng) {
         return L.circleMarker(latlng, {
-            color: 'orange',
+            color: '#cbc9c6',
             weight: 1,
-            fillColor: 'yellow',
+            fillColor: '#ffffff',
             fillOpacity: .8,
             radius: getRadius(feature.properties.capacity_mw)
         });   
@@ -94,22 +94,25 @@
         filter: function(feature, layer) {
         if(feature.properties.fuel_source.Coal){
             return feature;   
-        }
+        }},
             
     onEachFeature : function(feature,layer) {
         layer.on('mouseover', function() {
             layer.setStyle({
-                fillColor: 'red'
+                fillColor: '#00ffff'
         });
 });
         layer.on('mouseout', function() {
             layer.setStyle({
-            fillColor: 'yellow'
+            fillColor: '#cbc9c6'
         });
 });
     
         
-    layer.bindPopup('popup here');
+        layer.bindPopup("<b>Plant Name:</b> "+feature.properties.plant_name+  "<br><b>Total Capacity from Coal:</b> " + 
+                     feature.properties.fuel_source.Coal+ ' MW' + "<br><b>Total Plant Capacity:</b> "+feature.properties.capacity_mw + ' MW'); 
+           
+        console.log(feature)
     }
 }).addTo(map);
         
