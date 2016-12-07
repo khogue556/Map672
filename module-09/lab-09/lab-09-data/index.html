@@ -159,9 +159,14 @@
         };
 
         var sourcesLabels = { //  keep here, will not work for some reason
-            "<b style='color:#bfbfbf'>Hydro</b>": layerInfo.coalLayer,
+            "Coal": geoJsonLayers.coalLayer,
+            "Nuclear": geoJsonLayers.nuclearLayer,
+            "Hydro": geoJsonLayers.HydroLayer
+
+
+            /*"<b style='color:#bfbfbf'>Hydro</b>": layerInfo.coalLayer,
             "<b style='color:#f5a9a9'>Nuclear</b>": layerInfo.nuclearLayer,
-            "<b style='color:#f5a9a9'>Hydro<b>": layerInfo.hydroLayer,
+            "<b style='color:#f5a9a9'>Hydro<b>": layerInfo.hydroLayer,*/
         };
 
         L.control.layers(null, sourcesLabels, {
