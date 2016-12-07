@@ -17,32 +17,37 @@
             font-family: Lato, sans-serif;
             color: #0D0000;
         }
+        
         header {
             padding: 6px 10%;
         }
+        
         h1 {
             display: inline-block;
             margin-right: 20px;
             color: #001323;
         }
+        
         h2 {
             display: inline-block;
             color: #001323;
         }
+        
         #map {
             width: 80%;
             height: 540px;
             margin: 10px auto;
         }
+        
         footer {
             padding: 6px 10%;
             width: 80%;
         }
+        
         p {
             font-size: 1em;
             color: #001323;
         }
-    
     </style>
 </head>
 
@@ -56,72 +61,70 @@
 
     <footer>
         <p>Map authored by Kevin Hogue for New Maps Plus, Fall 2016</p>
-        <p>Map displays US power plant production from coal.  Zoom and click to see coal capacity as well as total plant capacity</p>
+        <p>Map displays US power plant production from coal. Zoom and click to see coal capacity as well as total plant capacity</p>
     </footer>
     <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
     <script src="power-plants.js"></script>
     <script>
-
-      var map = L.map('map', {
-          center: [36,-94],
-          zoom: 4,
-      });
-
-      var tiles = L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
-          attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
-          subdomains: 'abcd',
-          maxZoom: 19
-      });
-
-      tiles.addTo(map);
-
-      
-    plants.features.sort(function(a, b) {
-        return b.properties.capacity_mw - a.properties.capacity_mw;
-});
-        
-    L.geoJson(plants, {
-    pointToLayer: function(feature,latlng) {
-        return L.circleMarker(latlng, {
-            color: '#cbc9c6',
-            weight: 1,
-            fillColor: '#ffffff',
-            fillOpacity: .8,
-            radius: getRadius(feature.properties.capacity_mw)
-        });   
-    
-    },
-        filter: function(feature, layer) {
-        if(feature.properties.fuel_source.Coal){
-            return feature;   
-        }},
-            
-    onEachFeature : function(feature,layer) {
-        layer.on('mouseover', function() {
-            layer.setStyle({
-                fillColor: '#00ffff'
+        var map = L.map('map', {
+            center: [36, -94],
+            zoom: 4,
         });
-});
-        layer.on('mouseout', function() {
-            layer.setStyle({
-            fillColor: '#cbc9c6'
+
+        var tiles = L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+            subdomains: 'abcd',
+            maxZoom: 19
         });
-});
-    
-        
-        layer.bindPopup("<b>Plant Name:</b> "+feature.properties.plant_name+  "<br><b>Total Capacity from Coal:</b> " + 
-                     feature.properties.fuel_source.Coal+ ' MW' + "<br><b>Total Plant Capacity:</b> "+feature.properties.capacity_mw + ' MW'); 
-           
-        console.log(feature)
-    }
-}).addTo(map);
-        
-    function getRadius(area) {
-    var radius = Math.sqrt(area/Math.PI);
-    return radius * .6;  
-} 
-    
-    
+
+        tiles.addTo(map);
+
+
+        plants.features.sort(function (a, b) {
+            return b.properties.capacity_mw - a.properties.capacity_mw;
+        });
+
+        L.geoJson(plants, {
+            pointToLayer: function (feature, latlng) {
+                return L.circleMarker(latlng, {
+                    color: '#cbc9c6',
+                    weight: 1,
+                    fillColor: '#ffffff',
+                    fillOpacity: .8,
+                    radius: getRadius(feature.properties.capacity_mw)
+                });
+
+            },
+            filter: function (feature, layer) {
+                if (feature.properties.fuel_source.Coal) {
+                    return feature;
+                }
+            },
+
+            onEachFeature: function (feature, layer) {
+                layer.on('mouseover', function () {
+                    layer.setStyle({
+                        fillColor: '#00ffff'
+                    });
+                });
+                layer.on('mouseout', function () {
+                    layer.setStyle({
+                        fillColor: '#cbc9c6'
+                    });
+                });
+
+
+                layer.bindPopup("<b>Plant Name:</b> " + feature.properties.plant_name + "<br><b>Total Capacity from Coal:</b> " +
+                    feature.properties.fuel_source.Coal + ' MW' + "<br><b>Total Plant Capacity:</b> " + feature.properties.capacity_mw + ' MW');
+
+                console.log(feature)
+            }
+        }).addTo(map);
+
+        function getRadius(area) {
+            var radius = Math.sqrt(area / Math.PI);
+            return radius * .6;
+        }
     </script>
 
 </body>
