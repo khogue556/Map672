@@ -90,8 +90,6 @@
             fillOpacity: .8
         };
 
-
-
         var layerInfo = {
             coalLayer: {
                 source: "Coal",
@@ -133,7 +131,7 @@
 
         };
         map.on('click', function (e) {
-            layerInfo.eachLayer(function (layer) {
+           geoJsonLayers[layer].eachLayer(function (layer) {
                 var distance = e.latlng.distanceTo(layer.getLatLng()) / 1000;
 
                 if (distance > 500) {
@@ -146,7 +144,7 @@
                         stroke: true,
                         fill: true
                     });
-                    layer.bindPopup("I am <b>" + distance.toLocaleString() +
+                   layer.bindPopup("I am <b>" + distance.toLocaleString() +
                         "km</b><br> from the click point.");
                 }
             });
@@ -158,20 +156,16 @@
             return radius * .8;
         };
 
-        var sourcesLabels = { //  keep here, will not work for some reason
-            "Coal": geoJsonLayers.coalLayer,
-            "Nuclear": geoJsonLayers.nuclearLayer,
-            "Hydro": geoJsonLayers.HydroLayer
+        var sourcesLayers = { //  adds layer control
+            "<b style='color:#bfbfbf'>Coal</b>": geoJsonLayers.coalLayer,
+            "<b style='color:#f5a9a9'>Nuclear</b>": geoJsonLayers.nuclearLayer,
+            "<b style='color:#1f78b4'>Hydro</b>": geoJsonLayers.hydroLayer
 
-
-            /*"<b style='color:#bfbfbf'>Hydro</b>": layerInfo.coalLayer,
-            "<b style='color:#f5a9a9'>Nuclear</b>": layerInfo.nuclearLayer,
-            "<b style='color:#f5a9a9'>Hydro<b>": layerInfo.hydroLayer,*/
         };
 
-        L.control.layers(null, sourcesLabels, {
+        L.control.layers(null, sourcesLayers, {
             collapsed: false
-        }).addTo(map);
+        }).addTo(map)
     </script>
 
 </body>
