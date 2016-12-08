@@ -3,7 +3,7 @@
 
 <head>
     <meta charset=utf-8 />
-    <title>Lab 09 Template</title>
+    <title>US Power Plants</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
@@ -53,15 +53,15 @@
 
 <body>
     <header>
-        <h1>Map Title</h1>
-        <h2>Map Subtitle</h2>
+        <h1>US Power Plants</h1>
+        <h2>Coal, Nuclear, Hydro Power</h2>
     </header>
 
     <div id='map'></div>
 
     <footer>
-        <p>Map authored by YOUR NAME</p>
-        <p>Additional information about the data and map goes here.</p>
+        <p>Map authored by Kevin Hogue, for NMP Fall 2016</p>
+        <p>Click the map to show US power plants within a 500km radius, then click the feature to show distance from click point to the plant</p>
     </footer>
 
     <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
@@ -130,10 +130,11 @@
             }).addTo(map);
 
         };
-        map.on('click', function (e) {
-           geoJsonLayers[layer].eachLayer(function (layer) {
-                var distance = e.latlng.distanceTo(layer.getLatLng()) / 1000;
 
+        map.on('click', function (e) {
+            geoJsonLayers[layer].eachLayer(function (layer) {
+                var distance = e.latlng.distanceTo(layer.getLatLng()) / 1000;
+                //  console.log(layer);
                 if (distance > 500) {
                     layer.setStyle({
                         stroke: false,
@@ -144,7 +145,7 @@
                         stroke: true,
                         fill: true
                     });
-                   layer.bindPopup("I am <b>" + distance.toLocaleString() +
+                    layer.bindPopup(geoJsonLayers.layer + "<br>I am <b>" + distance.toLocaleString() +
                         "km</b><br> from the click point.");
                 }
             });
