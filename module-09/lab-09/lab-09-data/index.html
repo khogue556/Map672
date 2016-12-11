@@ -79,17 +79,27 @@
         });
 
         tiles.addTo(map);
+        //  create cirlce for spotlight
+        var radiusCircle = L.circle([0, 0], 500000, {
+            fillColor: 'white',
+            fillOpacity: .1,
+            color: 'yellow',
+            opacity: .3,
+            stroke: false,
+            weight: 3,
+        }).addTo(map)
 
-        /*plants.features.sort(function(a, b) {
-        return b.properties.capacity_mw - a.properties.capacity_mw;
-        });*/
+        //  send larger circles to front
+        plants.features.sort(function (a, b) {
+            return b.properties.capacity_mw - a.properties.capacity_mw;
+        });
 
         var commonStyles = {
             weight: 1,
             stroke: 1,
             fillOpacity: .8
         };
-
+        //  creat layers
         var layerInfo = {
             coalLayer: {
                 source: "Coal",
@@ -108,7 +118,7 @@
         };
 
         var geoJsonLayers = {};
-
+        //  create refactorable loop for creating the first map
         for (var layer in layerInfo) {
             geoJsonLayers[layer] = L.geoJson(plants, {
                 pointToLayer: function (feature, latlng) {
@@ -132,38 +142,55 @@
         };
 
         map.on('click', function (e) {
-            geoJsonLayers[layer].eachLayer(function (layer) {
-                var distance = e.latlng.distanceTo(layer.getLatLng()) / 1000;
-                //  console.log(layer);
-                if (distance > 500) {
-                    layer.setStyle({
-                        stroke: false,
-                        fill: false
-                    });
-                } else {
-                    layer.setStyle({
-                        stroke: true,
-                        fill: true
-                    });
-                    layer.bindPopup(geoJsonLayers.layer + "<br>I am <b>" + distance.toLocaleString() +
-                        "km</b><br> from the click point.");
-                }
-            });
+            //  create a UI where the click creates a spotlight 5000 KM from click point
+            radiusCircle.setLatLng(e.latlng)
+            for (var l in layerInfo) {
+                geoJsonLayers[l].eachLayer(function (layer) {
+                    var distance = e.latlng.distanceTo(layer.getLatLng()) / 1000;
+                    //  console.log(layer);
+                    if (distance > 500) {
+                        layer.setStyle({
+                            stroke: false,
+                            fill: false
+                        });
+                    } else {
+                        layer.setStyle({
+                            stroke: true,
+                            fill: true
+                        });
+                        //  create variables for building popup
+                        var props = layer.feature.properties;
+                        var plant = props.plant_name;
+                        var type = layerInfo[l].source;
+                        var value = props.fuel_source[layerInfo[l].source] + " MW";
+                        var partOne = "<b>" + plant + "</b>" + "<br>";
+                        var partTwo = "<b>" + type + " Power" + "</b>" + "<br>";
+                        var partThree = "<b>" + value + "</b>" + " of production from " + type + "<br>";
+                        var partFour = "This plant is <b>" + distance.toLocaleString() +
+                            "km</b><br> from the click point.";
+
+                        var content = partOne + partTwo + partThree + partFour
+
+                        layer.bindPopup(content);
+                    }
+                });
+
+            }
         });
 
-
+        //  function for creating radius of circles
         function getRadius(val) {
             var radius = Math.sqrt(val / Math.PI);
             return radius * .8;
         };
-
+        //  create toggle switch in corner of map
         var sourcesLayers = { //  adds layer control
             "<b style='color:#bfbfbf'>Coal</b>": geoJsonLayers.coalLayer,
             "<b style='color:#f5a9a9'>Nuclear</b>": geoJsonLayers.nuclearLayer,
             "<b style='color:#1f78b4'>Hydro</b>": geoJsonLayers.hydroLayer
 
         };
-
+        //  posts the toggle switch
         L.control.layers(null, sourcesLayers, {
             collapsed: false
         }).addTo(map)
