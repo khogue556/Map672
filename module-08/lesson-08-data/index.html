@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <title>Coal and Natural Gas Power Plants</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: whitesmoke;
+            font-family: Lato, sans-serif;
+            color: #0D0000;
+        }
+        header {
+            padding: 6px 10%;
+        }
+        h1 {
+            display: inline-block;
+            margin-right: 20px;
+            color: #001323;
+        }
+       
+        #map {
+            width: 80%;
+            height: 540px;
+            margin: 10px auto;
+        }
+        footer {
+            padding: 6px 10%;
+            width: 80%;
+        }
+        p {
+            font-size: 1em;
+            color: #001323;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>US Power Plants</h1>
+        
+    </header>
+
+    <div id='map'></div>
+
+    <footer>
+        <p>Map authored by Kevin Hogue</p>
+        <p>Displays US Power Plants using both coal and Natural Gas.</p>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+    <script src="power-plants.js"></script>
+
+    <script>
+
+    var map = L.map('map', {
+    center: [36,-94],
+    zoom: 4,
+});
+
+   var tiles = L.tileLayer('http://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="http://cartodb.com/attributions">CartoDB</a>',
+    subdomains: 'abcd',
+    maxZoom: 19
+});  
+tiles.addTo(map);
+    
+    //  all plants
+   
+    /* L.geoJson(plants, {
+    pointToLayer: function(feature,latlng) {
+        return L.circleMarker(latlng, {
+         color: 'orange',
+         weight: 1,
+         fillColor: 'yellow',
+         fillOpacity: 1,
+         radius: 2
+     });
+            });   
+    }
+}).addTo(map);*/
+        
+        
+        
+        
+       //  hydro power 
+        
+    /*L.geoJson(plants, {
+    pointToLayer: function(feature,latlng) {
+            return L.circleMarker(latlng, {
+                color: 'darkblue',
+                weight: 1,
+                fillColor: '#9d9dfd',
+                fillOpacity: .8,
+                radius: 2
+            });   
+    },
+    filter: function(feature, layer) {
+        if(feature.properties.fuel_source.Hydro){
+            return feature;   
+        }
+    }
+}).addTo(map);*/
+        
+        //  Wind power
+        
+    /*L.geoJson(plants, {
+    pointToLayer: function(feature,latlng) {
+            return L.circleMarker(latlng, {
+                color: '#00ff3b',
+                weight: 1,
+                fillColor: '#bcf8c3',
+                fillOpacity: .8,
+                radius: 2
+            });   
+    },
+    filter: function(feature, layer) {
+        if(feature.properties.fuel_source.Wind){
+            return feature;   
+        }
+    }
+}).addTo(map);*/
+        
+        //  Natural Gas Edited
+        
+    L.geoJson(plants, {
+    pointToLayer: function(feature,latlng) {
+            return L.circleMarker(latlng, {
+                color: '#ff7600',
+                weight: 1,
+                fillColor: '#ffcd7d',
+                fillOpacity: .8,
+                radius: 2
+            });   
+    },
+    filter: function(feature, layer) {
+        if(feature.properties.fuel_source.Hydro){
+            return feature;   
+        }
+
+    
+    /*onEachFeature : function(feature, layer) {
+        layer.on('mouseover', function() {
+            layer.setStyle({
+                fillColor: 'red'
+        });
+});
+        layer.on('mouseout', function() {
+            layer.setStyle({
+            fillColor: 'yellow'
+        });
+});
+    
+        
+    layer.bindPopup('popup here');
+    }*/
+    }
+}).addTo(map);   
+        
+        //  Coal
+        
+  /*  L.geoJson(plants, {
+    pointToLayer: function(feature,latlng) {
+            return L.circleMarker(latlng, {
+                color: '#00ff3b',
+                weight: 1,
+                fillColor: '#adf8c7',
+                fillOpacity: .8,
+                radius: 2
+            });   
+    },
+    filter: function(feature, layer) {
+        if(feature.properties.fuel_source.Coal){
+            return feature;   
+        }
+    }
+}).addTo(map);*/
+        
+        
+        
+        
+        //  Capacity
+    /*L.geoJson(plants, {
+    pointToLayer: function(feature,latlng) {
+            return L.circleMarker(latlng, {
+                color: '#ff000a',
+                weight: 1,
+                fillColor: '#ff7d7d',
+                fillOpacity: .8,
+                radius: 2
+            });   
+    },
+    filter : function(feature, layer) {
+    if(feature.properties.capacity_mw > 500){
+        return feature;   
+    }
+}
+}).addTo(map);*/   
+        
+       //  Capacity and power type 
+    
+    /*L.geoJson(plants, {
+    pointToLayer: function(feature,latlng) {
+            return L.circleMarker(latlng, {
+                color: '#d8ff00',
+                weight: 1,
+                fillColor: '#fc0101',
+                fillOpacity: .8,
+                radius: 2
+            });   
+    },
+    filter : function(feature, layer) {
+    if(feature.properties.capacity_mw < 500 &&
+        feature.properties.fuel_source.Coal){
+        return feature;   
+    }
+}
+}).addTo(map);*/  
+    
+    //  Assignment  
+    
+        
+   /* L.geoJson(plants, {
+    pointToLayer: function(feature,latlng) {
+            return L.circleMarker(latlng, {
+                color: '#d8ff00',
+                weight: 1,
+                fillColor: '#fc0101',
+                fillOpacity: .8,
+                radius: 2
+            });   
+    },
+    filter : function(feature, layer) {
+    if(feature.properties.fuel_source['Natural Gas'] &&
+       feature.properties.fuel_source.Coal)
+    {
+        return feature;   
+            }
+    }
+}).addTo(map);*/
+      
+  
+    
+    </script>
+
+</body>
+
+</html>

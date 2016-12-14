@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <title>SEC East Top Three</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+
+    <style>
+        .image {
+            width: 90px;
+            height: 90px;
+        }
+        
+        body {
+            margin: 0;
+            padding: 0;
+            background: #080000;
+            font-family: "Noto Sans", sans-serif;
+            color: #ffffff;
+        }
+
+        section {
+            width: 960px;
+            margin: 20px auto;
+        }
+
+        h1 {
+            width: 960px;
+            margin: 20px auto;
+            font-family: "Lora", serif;
+            letter-spacing: .04em;
+        }
+
+        h2 {
+            font-family: "Lora", serif;
+            letter-spacing: .04em;
+        }
+
+        p {
+            font-size: 1em;
+            line-height: 1.5em;
+        }
+
+        .Gator-blue {
+            color: #0021A5                
+        }
+        
+        .Rocky-Top-Orange {
+            color: #FF8200
+            
+        }  
+        
+        .Bulldog-Red {
+            color: #AE070F 
+        }
+        
+        a {
+            color: #ffff00;
+            font-weight: bold;
+            text-decoration: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        #map {
+            width: 960px;
+            height: 540px;
+            margin: 10px auto;
+            border: 2px solid #ff0303;
+        }
+    
+    </style>
+</head>
+
+<body>
+    <h1>SEC East Top Three</h1>
+
+    <div id='map'></div>
+
+
+    <section>
+
+        <p>Map authored by Kevin Hogue for New Maps Plus - 672, fall 2016</p>
+
+        <p>The top three teams in the SEC East Division as of 11/20/2016.  Complete SEC standings for <a href="http://www.secsports.com/standings/football">2016</a>. Population data for Gainsville and Knoxville are 2015 estimates from the US Census Bureau.  Population data for Athens is from the 2010 US Census. </p>
+
+    </section>
+
+    <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+
+    <script>
+        var map = L.map('map', {
+            center: [33.05, -83.36],
+            zoom: 5.75,
+        });
+
+        var tiles = L.tileLayer('http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        });
+        map.addLayer(tiles);
+
+        // Begin writing/modifying code for Lab 06 here
+
+        var cities = [
+          {
+            name: "Gainsville",
+            properties: {
+                coordinates: [29.6516, -82.3248],
+                population: 130128,  // 2015 estimate
+                state: "Florida",
+                image: 'images/ufLogo.jpg',
+                rank: 1
+            }
+        },
+         {
+            name: "Knoxville",
+            properties: {
+                coordinates: [35.9606, -83.9207],
+                population: 185291, //  2015 estimate
+                state: "Tennessee",
+                image: 'images/utLogo.jpg', 
+                rank: 2
+            }
+        },
+         {
+            name: "Athens",
+            properties: {
+                coordinates: [33.9519, -83.3576],
+                population: 115452, //  2010 US Census 
+                state: "Georgia",
+                image: 'images/ugaLogo.jpg',
+                rank: 3
+            }
+        }
+         
+        ];
+    
+                
+        for (var i = 0; i < cities.length; i++){
+            var city = cities[i].name;
+            var pop = cities[i].properties.population;
+            var state = cities[i].properties.state;
+            var props = cities[i].properties;
+            
+            console.log(cities[i]);
+            var popup = buildPopup(props.rank, props.image, cities[i].name, props.population, props.state);
+
+            L.marker(props.coordinates).addTo(map)
+                .bindPopup(popup);
+                        
+        }
+        
+        function buildPopup(rank, image, city, pop, state){
+            if(state === "Florida") {
+                var colorClass = "Gator-blue";
+        }
+            else if(state === "Tennessee") {
+                var colorClass = "Rocky-Top-Orange";
+        }
+            else if(state === "Georgia") {
+                var colorClass = "Bulldog-Red";
+        }
+            
+            return "<img class='image' src='"+image+"'><br>" + "<div class='"+colorClass+"'><b>"+city+"</b><br>"+
+                   "<b>Population</b>: "+props.population.toLocaleString().toLocaleString()+
+                   "<br>SEC East Rank</b>: " +props.rank+ "</br>" + "<div>";
+                        
+        console.log(city, pop, state);
+            
+        };
+    
+    //  Gator-blue  #0021A5
+    //  Rocky-Top-Orange  FF8200
+    //  Bulldog-Red   AE070F   
+    //  props.population.toLocaleString()
+    
+    </script>
+
+</body>
+
+</html>

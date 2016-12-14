@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <title>Lesson 07 Template</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css" />
+  	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
+  	<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+  	<link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+
+    <style>
+  		body {
+  			margin: 0;
+  			padding: 0;
+  			background: whitesmoke;
+  			font-family: "Noto Sans", sans-serif;
+  			color: #3d3d3d;
+  		}
+
+      	section {
+  			width: 960px;
+  			margin: 20px auto;
+  		}
+
+  		h1 {
+  			width: 960px;
+  			margin: 20px auto;
+  			font-family: "Lora", serif;
+  			letter-spacing: .04em;
+  		}
+
+  		h2 {
+  			font-family: "Lora", serif;
+  			letter-spacing: .04em;
+  		}
+
+  		p {
+  			font-size: 1em;
+  			line-height: 1.5em;
+  		}
+
+  		a {
+  			color: #005daa;
+        		font-weight: bold;
+  			text-decoration: none;
+  		}
+
+  		a:hover {
+  			text-decoration: underline;
+  		}
+
+  		ul {
+  			padding-left: 20px;
+  		}
+
+  		li {
+  			margin: 10px 0
+  		}
+
+  		#map {
+  		  width: 960px;
+  		  height: 540px;
+  		  margin: 10px auto;
+  		  border: 2px solid #d3d3d3;
+  		}
+  	</style>
+</head>
+
+<body>
+  <h1>This is the title to my awesome map.</h1>
+
+ <div id='map'></div>
+
+ <section>
+   <h2>about this map</h2>
+
+   <p>Map authored by me, MY NAME</p>
+
+   <p>Additional information about <a href="#">the data</a> and map goes here. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis urna magna, maximus nec laoreet sit amet, dictum ultricies nibh. Ut id auctor lacus. Nam a dolor et justo luctus luctus. </p>
+
+ </section>
+
+    <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+  	<script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+    <script>
+
+      // build your Leaflet map here!
+        //  The first  map  is a JavaScript variable we're using to reference the Leaflet map object
+        //  The second  map  is the name of a particular Leaflet method, e.g.,  L.map()
+        //  The third  map  is the name of the target HTML  div  element's  id  attribute that was defined
+        //  on line 59. This is where the map we are making appears within the DOM
+        /*var map = L.map('map', {
+            center: [51.505, -0.09],
+            zoom: 13
+});*/
+        //  adds tiles to map so we can see them and work through examples  //
+        var tiles = L.tileLayer('http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    });    
+
+        /*map.addLayer(tiles);*/
+        
+        /*var mapCenter = L.latLng(38.0489,-96.5025); // defining a variable using L.latLng()
+
+        var map = L.map('map', {
+            center: mapCenter,  // using this variable to center our map
+            zoom: 4
+});*/
+       /* 
+        var mapCenter = L.latLng(38.0489,-96.5025);
+        var otherCity = L.latLng(38.1489,-96.5125);
+        var distance = mapCenter.distanceTo(otherCity);
+console.log(distance); // will output distance between cities in meters*/
+
+        /*map.addLayer(tiles);*/
+        
+        /*var options = {
+            center: [38.0489,-96.5025],
+            zoom: 4, // initial zoom level
+            minZoom: 4,  //  overrides default zoom levels
+            maxZoom: 7
+}
+        var map = L.map('map', options);
+        
+        
+        map.addLayer(tiles);*/
+        
+        
+        var options = {
+            center: [38.0489,-96.5025],
+            zoom: 4,
+            }
+        var map = L.map('map', options);
+        
+        /*map.addLayer(tiles);
+        
+        map.on('click', function(e) {
+    console.log(e.latlng);
+});*/
+        
+        
+        /*var map = L.map('map');
+        map.setView([38.0489,-96.5025], 4);
+        
+         map.addLayer(tiles);
+        */
+        
+        
+        /*var center = map.getCenter();
+        console.log(center); // returns a LatLng object
+        var zoom = map.getZoom();
+        console.log(zoom); // returns a Number
+        var bounds = map.getBounds();
+        console.log(bounds); // returns a LatLngBounds object
+        
+        var center = map.getCenter();
+        console.log(center.lat, center.lng); // outputs the specific latitude and the longitude values
+        
+        var bounds = map.getBounds(); // returns the LatLngBounds object
+        var bottomLeft = bounds.getSouthWest(); // returns a LatLng object
+        console.log(bottomLeft.lat, bottomLeft.lng); // outputs the lat and lng values*/
+        
+        /*L.marker([38.0297, -84.4947]).addTo(map); // places a marker on Lexington*/
+        
+        /*map.addLayer(tiles);*/
+        
+        
+        /*var redIguanaLocation = L.latLng(40.7718,-111.9124);
+        var redIguanaMarker = L.marker(redIguanaLocation);
+        redIguanaMarker.addTo(map);*/
+        
+       /* var redIguanaLocation = L.latLng(40.7718,-111.9124);
+        var redIguanaMarker = L.marker(redIguanaLocation, {
+            draggable: true,
+            opacity: .4
+    });
+    redIguanaMarker.addTo(map);
+        
+        map.addLayer(tiles);*/
+        
+        /*var redIguanaLocation = L.latLng(40.7718,-111.9124);
+        var redIguanaMarker = L.marker(redIguanaLocation, {
+            draggable: true   
+});
+        redIguanaMarker.addTo(map);
+        redIguanaMarker.on('drag', function(e) {
+        console.log(e.target.getLatLng());
+});
+        
+        map.addLayer(tiles);*/
+        
+        
+       /* var redIguanaLocation = L.latLng(40.7718,-111.9124);
+        var redIguanaMarker = L.marker(redIguanaLocation);
+redIguanaMarker.addTo(map);
+redIguanaMarker.bindPopup("Best Mexican food in Salt Lake City!");
+        */
+        //  method chaining  //
+        
+       /* L.marker([40.21,-88.154]).addTo(map).bindPopup(popup);*/
+        
+        
+        //  add circles and raster/vector SVG markers  //
+        
+        /*var redIguanaLocation = L.latLng(40.7718,-111.9124);
+        var redIguanaCircle = L.circle(redIguanaLocation, 400);
+redIguanaCircle.addTo(map);
+        map.addLayer(tiles);*/
+        
+       
+        //  circle over dads house //
+        /* var dadHouseLocation = L.latLng(39.623513, -84.049933)
+        var dadHouseCircle = L.circle(dadHouseLocation, 1000)
+dadHouseCircle.addTo(map);
+        map.addLayer(tiles);
+        console.log(dadHouseLocation);*/
+        
+        //  changing color of circle and circle border or stroke  //
+        
+        /*var redIguanaLocation = L.latLng(40.7718,-111.9124);
+        var redIguanaCircle = L.circle(redIguanaLocation, 400, {
+            color: "#d72b1e",  // changes the stroke color
+            fillColor: "#d72b1e"  // changes the fill color
+});
+redIguanaCircle.addTo(map);
+        
+        map.addLayer(tiles);*/
+        
+        
+        //  using .setstyle  //
+        /*var redIguanaLocation = L.latLng(40.7718,-111.9124);
+        var redIguanaCircle = L.circle(redIguanaLocation, 400);
+redIguanaCircle.addTo(map);
+
+redIguanaCircle.setStyle({
+    color: "#d72b1e", // sets stroke color to red
+    weight: 10, // sets the stroke width to 15 pixels
+    fillColor: "#d72b1e",  // sets fill color to red
+    fillOpacity: .4  // sets the fill opacity to 1
+});
+        map.addLayer(tiles);*/
+        
+        
+        /*var redIguanaLocation = L.latLng(40.7718,-111.9124);
+        var redIguanaCircle = L.circle();
+redIguanaCircle.setLatLng(redIguanaLocation);
+redIguanaCircle.setRadius(400);
+redIguanaCircle.addTo(map);
+        
+        map.addLayer(tiles);*/
+        
+        //  layer groups  //
+        
+        /*var iguanaRestaurants = L.layerGroup();
+        var redIguana = L.circle([40.7718,-111.9124], 400);
+        redIguana.addTo(iguanaRestaurants);
+        var blueIguana = L.circle([40.7657, -111.8930], 300);
+        blueIguana.addTo(iguanaRestaurants);
+        iguanaRestaurants.addTo(map);
+        
+        
+        map.addLayer(tiles);*/
+        
+        //  eachLayer  //
+        
+        /*var iguanaRestaurants = L.layerGroup();
+        var redIguana = L.circle([40.7718,-111.9124], 400);
+        redIguana.addTo(iguanaRestaurants);
+        var blueIguana = L.circle([40.7657, -111.8930], 300);
+        blueIguana.addTo(iguanaRestaurants);
+        iguanaRestaurants.addTo(map);
+
+        iguanaRestaurants.eachLayer(function(layer) {
+            console.log(layer);
+});
+        
+        map.addLayer(tiles);*/
+        
+        //  mouseover  //
+        
+/*        var iguanaRestaurants = L.layerGroup();
+        var redIguana = L.circle([40.7718,-111.9124], 400);
+        redIguana.addTo(iguanaRestaurants);
+        var blueIguana = L.circle([40.7657, -111.8930], 300);
+        blueIguana.addTo(iguanaRestaurants);
+        iguanaRestaurants.addTo(map);
+
+            
+        
+        iguanaRestaurants.eachLayer(function(layer) {
+            layer.on('mouseover', function(e) {
+            e.target.setStyle({
+                color: 'yellow',
+                fillColor: 'yellow'
+        });
+    });
+    layer.on('mouseout', function(e) {
+        e.target.setStyle({
+            color: '#03f',
+            fillColor: '#03f'
+        });
+    });
+});
+      map.addLayer(tiles); */ 
+        
+        //  lesson example  //
+        //  my comments refer to the line of code below the comment  //
+        //  creates teh layerGroup
+        var iguanaRestaurants = L.layerGroup();
+        //  creates the red iguana circle settings, out line red, fill red
+        var redIguanaOptions = {
+            color: 'red',
+            fillColor: 'red'
+};
+        //  sets teh blue iguana options, blue outline, blue fill        
+        var blueIguanaOptions = {
+            color: '#03f',
+            fillColor: '#03f'
+};
+        // sets a varible called redIguana and passes coordinates, radius and circle
+        // colors set above in teh redIguanaOptions
+        var redIguana = L.circle([40.7718,-111.9124], 400, redIguanaOptions);
+        redIguana.color = 'red';
+        //  adds rediguana variable to the iguanaRestaurants layer group
+        redIguana.addTo(iguanaRestaurants);
+        //  variable for blueIguana, passes coordinates, radius, and options
+        var blueIguana = L.circle([40.7657, -111.8930], 300, blueIguanaOptions);
+        blueIguana.color = 'blue';
+        //  adds blueIguana to the iguanaRestaurants layer group
+        blueIguana.addTo(iguanaRestaurants);
+        //  adds the layer group to the map
+        iguanaRestaurants.addTo(map);
+
+        //  this section of code turns the circle yellow when the mouse crosses over the circle
+        iguanaRestaurants.eachLayer(function(layer) {
+            layer.on('mouseover', function(e) {
+                e.target.setStyle({
+                    color: 'yellow',
+                    fillColor: 'yellow'
+        });
+    });
+            //  this code turns the circle back to blue once the mouse has moved off the circle
+            //  using an if/else statement each circle is returned to its original color, red to blue
+            //  the .setstyle method refers teh the options set above for each restaurant
+            layer.on('mouseout', function(e) {
+                if(e.target.color == 'red') {
+                    e.target.setStyle(redIguanaOptions);
+            } else if (e.target.color == 'blue') {
+                    e.target.setStyle(blueIguanaOptions);      
+        }
+    });
+});
+       //  this adds the map tiles
+        map.addLayer(tiles);
+        
+    </script>
+
+</body>
+
+</html>
