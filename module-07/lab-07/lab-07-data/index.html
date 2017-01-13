@@ -7,138 +7,146 @@
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.css" />
-  	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
-  	<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
-  	<link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.1/dist/leaflet.css" />
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
 
     <style>
-  		body {
-  			margin: 0;
-  			padding: 0;
-  			background: #ff0000;
-  			font-family: "Noto Sans", sans-serif;
-  			color: #f5ff03;
-  		}
+        body {
+            margin: 0;
+            padding: 0;
+            background: #ff0000;
+            font-family: "Noto Sans", sans-serif;
+            color: #f5ff03;
+        }
 
-      	section {
-  			width: 960px;
-  			margin: 20px auto;
-  		}
+        section {
+            width: 960px;
+            margin: 20px auto;
+        }
 
-  		h1 {
-  			width: 960px;
-  			margin: 20px auto;
-  			font-family: "Lora", serif;
-  			letter-spacing: .04em;
-  		}
+        h1 {
+            width: 960px;
+            margin: 20px auto;
+            font-family: "Lora", serif;
+            letter-spacing: .04em;
+        }
 
-  		h2 {
-  			font-family: "Lora", serif;
-  			letter-spacing: .04em;
-  		}
+        h2 {
+            font-family: "Lora", serif;
+            letter-spacing: .04em;
+        }
 
-  		p {
-  			font-size: 1em;
-  			line-height: 1.5em;
-  		}
+        p {
+            font-size: 1em;
+            line-height: 1.5em;
+        }
 
-  		a {
-  			color: #ffffff;
-        		font-weight: bold;
-  			text-decoration: none;
-  		}
+        a {
+            color: #ffffff;
+            font-weight: bold;
+            text-decoration: none;
+        }
 
-  		a:hover {
-  			text-decoration: underline;
-  		}
+        a:hover {
+            text-decoration: underline;
+        }
 
-  		ul {
-  			padding-left: 20px;
-  		}
+        ul {
+            padding-left: 20px;
+        }
 
-  		li {
-  			margin: 10px 0
-  		}
+        li {
+            margin: 10px 0
+        }
 
-  		#map {
-  		  width: 960px;
-  		  height: 540px;
-  		  margin: 10px auto;
-  		  border: 2px solid #ff0000;
-  		}
-  	</style>
+        #map {
+            width: 960px;
+            height: 540px;
+            margin: 10px auto;
+            border: 2px solid #ff0000;
+        }
+    </style>
 </head>
 
 <body>
-  <h1>Salt Lake City's Red Iguana Restaurant</h1>
+    <h1>Salt Lake City's Red Iguana Restaurant</h1>
 
- <div id='map'></div>
+    <div id='map'></div>
 
- <section>
-   
-    <p>Map authored Kevin Hogue for New Maps Plus 672, fall 2016</p>
+    <section>
 
-   <p>Additional information about <a href="http://www.rediguana.com/">Red Iguana Restaurant</a> </p>
+        <p>Map authored Kevin Hogue for New Maps Plus 672, fall 2016</p>
 
- </section>
+        <p>Additional information about <a href="http://www.rediguana.com/">Red Iguana Restaurant</a> </p>
+
+    </section>
 
     <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
-  	<script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet@1.0.1/dist/leaflet.js"></script>
     <script>
-
-    var tiles = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
-	attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
-});
+        var tiles = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
+            attribution: 'Tiles &copy; Esri &mdash; Source: Esri, DeLorme, NAVTEQ, USGS, Intermap, iPC, NRCAN, Esri Japan, METI, Esri China (Hong Kong), Esri (Thailand), TomTom, 2012'
+        });
 
 
         var options = {
-        center: [40.74,-110.61],
-        zoom: 6
-    }
- 
-            
-    var map = L.map('map', options);
-
-    var redIguana = L.latLng(40.7718,-111.9124);
-   
-    L.marker(redIguana, {
-        icon : L.icon({
-            iconUrl: 'red_iguana.png',
-            iconSize: [40, 36]
-        })
-    }).addTo(map);
-
-    var clickPoint = map.on('click', function(e) {
-        console.log(e.latlng);
-        L.marker(e.latlng, {
-        draggable: true,
-        opacity: 1
-        })/*.addTo(map).bindPopup(popup).openPopup();*/
-    
-    var dragDistance = e.latlng.distanceTo(redIguana);
-        console.log(dragDistance);
-   
-    var popup = (dragDistance.toLocaleString() +" meters to the Red Iguana" );
-        
-    var marker = L.marker(e.latlng, {
-            draggable: true,
-            opacity: 1
-
- }).addTo(map).bindPopup(popup).openPopup();  
-        
-    
-    marker.on('dragend', function(e){
-
-        
-    var draggable = new L.Draggable(dragDistance);
-            draggable.dragend().enable();
-
-     });  
-            
-     marker.getPopup().setContent(dragDistance.toLocaleString() +" kilometers to the Red Iguana");
-    });
+            center: [40.74, -110.61],
+            zoom: 6
+        }
+        var map = L.map('map', options);
 
         map.addLayer(tiles)
+
+        var redIguana = L.latLng(40.7718, -111.9124);
+
+        L.marker(redIguana, {
+            icon: L.icon({
+                iconUrl: 'red_iguana.png',
+                iconSize: [40, 36]
+            })
+        }).addTo(map);
+
+        var clickPoint = map.on('click', function(e) {
+
+            L.marker(e.latlng, {
+                draggable: true,
+                opacity: 1
+            });
+
+            // calculate drag distance
+            var dragDistance = e.latlng.distanceTo(redIguana)/1000;
+
+            // build popup with distance info
+            var popup = dragDistance.toLocaleString() + " meters to the Red Iguana";
+
+            // add marker to map, bind and open popup
+            var marker = L.marker(e.latlng, {
+                draggable: true,
+                opacity: 1
+
+            }).addTo(map).bindPopup(popup).openPopup();
+
+            // when user is done dragging marker
+            marker.on('dragend', function(e) {
+
+              // recalcualte the drag distance
+              dragDistance = marker.getLatLng().distanceTo(redIguana)/1000;
+
+              // rebuild the popup
+              popup = dragDistance.toLocaleString() + " meters to the Red Iguana";
+
+              // get marker popup, reset the content
+              marker.getPopup().setContent(dragDistance.toLocaleString() + " kilometers to the Red Iguana");
+
+              // open the popup
+              marker.openPopup();
+
+            });
+
+
+        });
+
 
     </script>
 
